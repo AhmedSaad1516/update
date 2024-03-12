@@ -1,0 +1,49 @@
+<mat-label>
+    {{ label }}
+    <mat-icon color="warn" class="required-icon" *ngIf="isRequired()">*</mat-icon>
+    <mat-icon
+      color="primary"
+      class="question-icon"
+      *ngIf="hint"
+      matTooltipPosition="above"
+      [matTooltip]="hint"
+      >{{ "shared.question" | translate }}</mat-icon
+    >
+  </mat-label>
+  <mat-form-field appearance="outline" class="d-flex pt-3">
+    <mat-select
+      [placeholder]="placeholder"
+      [formControl]="controlF"
+      [errorStateMatcher]="matcher"
+      hideSingleSelectionIndicator="true"
+      class="custom-select"
+    >
+      <mat-select-trigger style="height: 58px">
+        <img
+          src="../../../../../assets/img/flags/suadi.svg"
+          style="height: 22px; margin-inline-end: 5px"
+          alt=""
+        />
+        <span style="margin-inline-end: 5px">{{ getOptionLabel() }}</span>
+       <ng-template >
+        <mat-icon>
+          visibility
+        </mat-icon>
+       </ng-template>
+      </mat-select-trigger>
+      <mat-option *ngFor="let option of options" [value]="option.id"
+        >{{ option.name }}
+        <img
+          src="../../../../../assets/img/flags/suadi.svg"
+          style="height: 22px; margin-inline-start: 10px"
+          alt=""
+        />
+      </mat-option>
+    </mat-select>
+  
+    <!-- Error handling -->
+    <mat-error *ngIf="controlF.hasError('required')">
+      {{ label }} <strong>{{ "valdation.required" | translate }}</strong>
+    </mat-error>
+  </mat-form-field>
+  

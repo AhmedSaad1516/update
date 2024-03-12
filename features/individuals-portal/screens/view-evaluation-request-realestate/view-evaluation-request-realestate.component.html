@@ -1,0 +1,111 @@
+<side-nav>
+    <widget-card [widgetCardList]="widgetCardListData"/>
+    <app-title-form>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
+            <div class="fw-bold d-inline-flex pt-2" fxFlex="20">
+                <img [src]="'assets/img/myRequest.svg'" width="40" height="40"/>
+                <h2 class="fw-bold primary-color align-self-center px-2">{{ 'viewEvaluationRequestRealestate.SubTitle' | translate }}</h2>
+            </div>
+            <div fxFlex="73"></div>
+            <div fxFlex="7">
+                <button mat-fab [attr.data-testid]="'filter'" [color]="colorFilter" aria-label="Example icon button with a delete icon" (click)="openFilter()">
+                    <mat-icon>  
+                        <i class="material-icons">{{iconFilter}}</i>
+                    </mat-icon>
+                </button>
+            </div>
+        </div>
+        <form
+            [formGroup]="viewRequestForm"
+            (ngSubmit)="$event.preventDefault(); submitForm()"
+            novalidate
+            *ngIf="isShow"
+            >
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between stretch" class="pt-3">
+                <div fxFlex="100">
+                    <app-auto-complete 
+                    [label]="'viewEvaluationRequestRealestate.valuationRequestTitle' | translate"
+                    [placeholder]="'viewEvaluationRequestRealestate.valuationRequestTitle' | translate"
+                    [control]="getFormGroup('valuationRequestTitle')"
+                    [options]="options"
+                    [dataTestId]="'valuationRequestTitle'"                  
+                    />
+                </div>
+            </div>
+
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between stretch" class="pt-0" fxLayoutGap="13">
+                <div fxFlex="33">
+                    <app-auto-complete 
+                    [label]="'viewEvaluationRequestRealestate.valuationRequestID' | translate"
+                    [placeholder]="'viewEvaluationRequestRealestate.valuationRequestID' | translate"
+                    [control]="getFormGroup('valuationRequestID')"
+                    [options]="options"
+                    [dataTestId]="'valuationRequestID'"                  
+                    />
+                </div>
+                <div fxFlex="33">
+                    <app-auto-complete 
+                    [label]="'viewEvaluationRequestRealestate.valuationRequestStatus' | translate"
+                    [placeholder]="'viewEvaluationRequestRealestate.valuationRequestStatus' | translate"
+                    [control]="getFormGroup('valuationRequestStatus')"
+                    [options]="options"
+                    [dataTestId]="'valuationRequestStatus'"                  
+                    />
+                </div>
+                <div fxFlex="33">
+                    <app-auto-complete 
+                    [label]="'viewEvaluationRequestRealestate.valuationSector' | translate"
+                    [placeholder]="'viewEvaluationRequestRealestate.valuationSector' | translate"
+                    [control]="getFormGroup('valuationSector')"
+                    [options]="options"
+                    [dataTestId]="'valuationSector'"                  
+                    />
+                </div>
+            </div>
+            
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between stretch" class="pt-0" fxLayoutGap="13">
+                <div fxFlex="33">
+                    <app-auto-complete 
+                    [label]="'viewEvaluationRequestRealestate.numberReceivedValuationReports' | translate"
+                    [placeholder]="'viewEvaluationRequestRealestate.numberReceivedValuationReports' | translate"
+                    [control]="getFormGroup('numberReceivedValuationReports')"
+                    [options]="options"
+                    [dataTestId]="'numberReceivedValuationReports'"                  
+                    />
+                </div>
+                <div fxFlex="33">
+                    <app-auto-complete 
+                    [label]="'viewEvaluationRequestRealestate.numberReceivedOffers' | translate"
+                    [placeholder]="'viewEvaluationRequestRealestate.numberReceivedOffers' | translate"
+                    [control]="getFormGroup('numberReceivedOffers')"
+                    [options]="options"
+                    [dataTestId]="'numberReceivedOffers'"                  
+                    />
+                </div>
+                <div fxFlex="33">
+                    <app-auto-complete 
+                    [label]="'viewEvaluationRequestRealestate.reportSubmissionDate' | translate"
+                    [placeholder]="'viewEvaluationRequestRealestate.reportSubmissionDate' | translate"
+                    [control]="getFormGroup('reportSubmissionDate')"
+                    [options]="options"
+                    [dataTestId]="'reportSubmissionDate'"                  
+                    />
+                </div>
+            </div>
+            <div fxLayout="row"  fxLayout.xs="column" fxLayoutAlign="end stretch" fxLayoutGap="10" class="pt-0">
+                <cancel-button
+                  fxFlex="20"
+                  class="d-grid"
+                  [label]="'shared.reCustomization' | translate"
+                  [dataTestId]="'reCustomization'">
+                </cancel-button>
+              </div>
+        </form>
+
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch" class="pt-4 pb-4">
+            <div fxFlex="100">
+                <data-table [dataSourceTable]="dataSourceViewRequest" [displayedColumns]="displayedColumns" [isFilter]="isFilter" />
+            </div>
+          </div>
+    </app-title-form>
+</side-nav> 

@@ -1,0 +1,273 @@
+<side-nav>
+  <div class="container edit-profile-container">
+    <a routerLinkActive="active" 
+    (click)="goToHome()">الرئيسة</a> >
+    <a routerLinkActive="active" 
+    (click)="goToProfile()">الملف الشخصي</a> >
+  
+    <a routerLinkActive="active" >تعديل</a> 
+       <span *ngIf="editCategory=='personalInfo'">
+        >
+        <a   routerLinkActive="active" >الملف الشخصي</a> 
+       </span>
+      
+       <span  *ngIf="editCategory=='editCV'">
+        >
+        <a   routerLinkActive="active" > السيرة الذاتية</a> 
+       </span>
+       <span  *ngIf="editCategory=='editCertificates'">
+        >
+        <a   routerLinkActive="active" >الشهادات العلمية</a> 
+       </span>
+       <span  *ngIf="editCategory=='editQualifications'">
+        >
+        <a   routerLinkActive="active" >العضوية العالمية والشهادات المهنية</a> 
+       </span>
+       <span  *ngIf="editCategory=='editNationadAddress'">
+        >
+        <a   routerLinkActive="active" >العنوان الوطني</a> 
+       </span>
+  </div>
+  
+  <mat-tab-group class="resize-container pt-4" *ngIf="editCategory=='imageProfile'">
+    <mat-tab [label]="'الصورة الشخصية' | translate" > 
+      <mat-card>
+        <mat-card-content>
+          <div class="image-container">
+            <div class="profile-image" (click)="openDialog()">
+              <img  class="defult_avatar" src="../../../../assets/img/avatar_defult.png" alt="">
+              <img  class="camira_icon" src="../../../../assets/img/camira_icon.png" alt="">
+              <!-- <span>انقر هنا لإضافة الصورة الشخصية</span> -->
+            </div>
+            <!-- <div>
+              <img *ngIf="lang !== 'en'" class="avatar_text" src="../../../../assets/img/avatar_text_ar.png" alt="">
+              <img *ngIf="lang == 'en'" class="avatar_text" src="../../../../assets/img/avatar_text_en.png" alt="">
+            </div> -->
+          </div>
+          <div class="checkbox-container">
+            <span>
+              <mat-checkbox
+                class="example-margin"
+                [color]="'primary'"
+                id="remember_me"
+                >{{ "عرض الصورة الشخصية في قائمة الأعضاء" | translate }}</mat-checkbox
+              >
+            </span>
+          </div>
+          <div class="image-info">
+            <p> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11 15H13V17H11V15ZM11 7H13V13H11V7ZM11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z"
+                  fill="#1A4681" />
+              </svg>
+             {{'evaluators.img_terms1' | translate}}
+            </p>
+            <p> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11 15H13V17H11V15ZM11 7H13V13H11V7ZM11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z"
+                  fill="#1A4681" />
+              </svg>
+      
+              {{'evaluators.img_terms2' | translate}}
+            </p>
+            <p> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11 15H13V17H11V15ZM11 7H13V13H11V7ZM11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z"
+                  fill="#1A4681" />
+              </svg>
+      
+              {{'evaluators.img_terms3' | translate}}
+            </p>
+            <p> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11 15H13V17H11V15ZM11 7H13V13H11V7ZM11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z"
+                  fill="#1A4681" />
+              </svg>
+      
+              {{'evaluators.img_terms4' | translate}}
+            </p>
+            <p> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11 15H13V17H11V15ZM11 7H13V13H11V7ZM11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z"
+                  fill="#1A4681" />
+              </svg>
+      
+              {{'evaluators.img_terms5' | translate}}
+            </p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <!-- <div fxLayout="row" fxLayoutAlign="space-evenly stretch" class="pb-4 pt-5">
+        <cancel-button
+          fxFlex="80"
+          [label]="'shared.back' | translate"
+          (buttonClick)="goToBack()">
+        </cancel-button>
+        <app-shared-button
+          fxFlex="20"
+          [label]="'personalInfo.Saveandcontinue' | translate"
+          (buttonClick)="submitForm()">
+        </app-shared-button>
+      </div> -->
+      
+      <ng-template #dialogTemplate class="img_popup_container">
+       <app-add-image-profile></app-add-image-profile>
+        </ng-template>
+      
+    </mat-tab>
+    <mat-tab [label]="'البريد الإلكتروني' | translate">
+      <form class="email-form"  >
+        <h6 class="mb-3">البريد الالكتروني</h6>
+        <!-- <p><b>هل ترغب في تغيير البريد الإلكتروني الحالي ؟</b> </p> -->
+      <div  fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutAlign="space-between stretch"
+    class="mb-4 info-div">
+          <input-field
+          fxFlex="100" 
+          [label]="('هل ترغب في تغيير البريد الإلكتروني الحالي ؟' | translate) + ''"
+          [placeholder]="'personalInfo.EnterYourEmail' | translate"
+          [id]="'email'"
+        />
+      </div>
+        <div fxLayout="row" fxLayoutAlign="space-evenly stretch" class="pb-4 pt-1">
+          <div  fxFlex="88">
+
+          </div>
+          <app-shared-button
+            fxFlex="12"
+            [label]="'ابدأ الان' | translate"
+            >
+          </app-shared-button>
+          <!-- (buttonClick)="submitForm()" -->
+        </div>
+    </form>
+    </mat-tab>
+    <mat-tab [label]="'رقم الجوال ' | translate"> 
+        <form  [formGroup]="form" class="email-form"  >
+          <h6 class="mb-3">رقم الجوال</h6>
+          <!-- <p><b>هل ترغب في تغيير رقم الجوال الحالي ؟</b> </p> -->
+        <div  fxLayout="row"
+      fxLayout.xs="column"
+      fxLayoutAlign="space-between stretch"
+      class="mb-4 info-div">
+      <app-input-group
+      fxFlex="100"
+      [optionsLabel]="''"
+      [optionsPlaceholder]="'nationalAddress.Choose' | translate"
+      [options]="phoneCode"
+      [optionscontrolF]="form.get('countryKey')"
+      [inputLabel]="('هل ترغب في تغيير رقم الجوال الحالي ؟' | translate) + ''"
+      [inputPlaceholder]="
+        'personalInfo.EnterYourMobileNumber' | translate
+      "
+      [id]="'mobileNumber'"
+    />
+        </div>
+          <div fxLayout="row" fxLayoutAlign="space-evenly stretch" class="pb-4 pt-1">
+            <div  fxFlex="88">
+  
+            </div>
+            <app-shared-button
+              fxFlex="12"
+              [label]="'ابدأ الان' | translate"
+              >
+            </app-shared-button>
+            <!-- (buttonClick)="submitForm()" -->
+          </div>
+      </form>
+      </mat-tab>
+     
+    <mat-tab [label]="'كلمة المرور' | translate"> 
+      <form   class="email-form"  >
+        <h6 class="mb-3">كلمة المرور</h6>
+        <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutAlign="space-between stretch"
+      >
+      <div fxFlex="100" fxLayoutGap="20px">
+        <input-field
+          [id]="'passward'"
+          [label]="('كلمة المرور القديمة' | translate) + ''"
+          [placeholder]="'personalInfo.Enter' | translate"
+          [controlF]="form.get('passward')"
+          [type]="'password'"
+          [hint]="'personalInfo.passwordHint' | translate"
+        />
+      </div>
+      </div>
+        <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutAlign="space-between stretch"
+      >
+     
+        <div fxFlex="49" fxLayoutGap="20px">
+          <input-field
+            [id]="'passward'"
+            [label]="('كلمة المرور الجديدة' | translate) + ''"
+            [placeholder]="'personalInfo.Enter' | translate"
+            [controlF]="form.get('passward')"
+            [type]="'password'"
+            [hint]="'personalInfo.passwordHint' | translate"
+          />
+        </div>
+        <div fxFlex="49">
+          <input-field
+            [id]="'confirmPassward'"
+            [label]="('تأكيد كلمة المرور الجديدة*' | translate) + ''"
+            [placeholder]="'personalInfo.Enter' | translate"
+            [controlF]="form.get('confirmPassward')"
+            [type]="'password'"
+          />
+        </div>
+      </div>
+        <div fxLayout="row" fxLayoutAlign="space-evenly stretch" class="pb-4 pt-1">
+          <div  fxFlex="88">
+
+          </div>
+          <app-shared-button
+            fxFlex="12"
+            [label]="'ابدأ الان' | translate"
+            >
+          </app-shared-button>
+          <!-- (buttonClick)="submitForm()" -->
+        </div>
+    </form>
+      
+    </mat-tab>
+</mat-tab-group>
+
+<div *ngIf="editCategory=='personalInfo'" class="pb-3 pt-3">
+<app-edit-personal-info></app-edit-personal-info>
+</div>
+
+<div *ngIf="editCategory=='editCV'" class="pb-3 pt-3">
+  <h6 class="mb-3">{{'evaluators.Biography'| translate }}</h6>
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between stretch">
+    <div fxFlex="99">
+  
+      <app-upload-file-drag [label]="'evaluators.Biography'|translate" />
+    </div>
+  </div>
+</div>
+
+<div *ngIf="editCategory=='editCertificates'" class="pb-3 pt-3">
+  <!-- <h6 class="mb-3">الشهادات العلمية</h6> -->
+  <app-done-add-qualification></app-done-add-qualification>
+</div>
+
+<div *ngIf="editCategory=='editQualifications'" class="pb-3 pt-3">
+  <!-- <h6 class="mb-3">العضوية العالمية والشهادات المهنية</h6> -->
+  <app-done-add-certification-request-realestate></app-done-add-certification-request-realestate>
+</div>
+
+
+<div *ngIf="editCategory=='editNationadAddress'" class="pb-3 pt-3">
+  <!-- <h6 class="mb-3">العضوية العالمية والشهادات المهنية</h6> -->
+  <app-done-add-national-address></app-done-add-national-address>
+</div>
+
+
+</side-nav>

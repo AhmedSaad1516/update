@@ -1,0 +1,25 @@
+<side-nav>
+  <div class="backgorund-style">
+    <div class="container px-lg-5 px-md-5"  fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-around center">
+      <div class="d-inline-flex" fxFlex="20">
+        <img [src]="'assets/img/qaym-logo-blue.svg'" width="200" height="200"/>
+      </div>
+      <div class="mx-5" fxFlex="80" fxLayoutAlign="center start" fxLayout="column" fxLayout.xs="column" >
+        <strong class="mx-5">{{ 'homepage.qaymDescription' | translate }}</strong>
+    </div>
+    </div>
+  </div>
+
+  <widget-card [widgetCardList]="widgetCardListData"/>
+
+  <app-title-form>
+    <div class="pb-1 pt-3" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
+        <div class="px-2 fw-bold d-inline-flex" fxFlex="50">
+            <img [src]="'assets/img/myRequest.svg'" width="40" height="40"/>
+            <h3 class="fw-bold primary-color align-self-center px-2">إنشاء طلب تقييم</h3>
+        </div>
+        <div fxFlex="50"></div>
+    </div>
+    <sector-card [sectorCardList]="sectorCardListHome"/>
+  </app-title-form>
+</side-nav> 

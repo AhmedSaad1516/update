@@ -1,0 +1,28 @@
+<mat-label>
+  {{ label }}
+  <mat-icon color="warn" class="required-icon" *ngIf="isRequiredValidator">*</mat-icon>
+  <mat-icon
+    color="primary"
+    class="question-icon"
+    *ngIf="hint"
+    matTooltipPosition="above"
+    [matTooltip]="hint"
+    >{{ 'shared.question' | translate }}
+  </mat-icon>
+</mat-label>
+<mat-form-field appearance="outline" class="d-flex pt-3">
+  <input
+    type="text"
+    [placeholder]="placeholder"
+    matInput
+    [formControl]="control"
+    [matAutocomplete]="auto"
+    [disabled]="isDisabled"
+    [id]="id"
+  />
+  <mat-autocomplete #auto="matAutocomplete">
+    @for (option of filteredOptions | async ; track option) {
+    <mat-option [value]="option.name">{{ option.name }}</mat-option>
+    }
+  </mat-autocomplete>
+</mat-form-field>

@@ -1,0 +1,36 @@
+<app-title-form [srcLink]="'assets/img/person_avatar.png'" [title]="'evaluators.registerInTheEvaluatorsPortal' | translate">
+  <!-- <app-shared-stepper [steps]="steps"></app-shared-stepper> -->
+  <!-- [orientation]="(stepperOrientation | async)!" -->
+  <mat-stepper linear #stepper  labelPosition="bottom" class="pt-4">
+    <mat-step [stepControl]="firstFormGroup" [label]="'signup.stepTwoLabel' | translate" state="phone" >
+      <app-evaluators-request-information (callParrentToGoToNextStep)="callParrentToGoToNextStep($event)"
+      (callParrentToGoToPrevStep)="callParrentToGoToPrevStep($event)"/>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" [label]="'evaluators.qualification' | translate">
+      <app-done-add-qualification
+      (callParrentToGoToNextStep)="callParrentToGoToNextStep($event)"
+      (callParrentToGoToPrevStep)="callParrentToGoToPrevStep($event)"/>
+    </mat-step>
+    <mat-step [stepControl]="thridFormGroup" [label]="'evaluators.avatar' | translate">
+      <app-choosing-evaluators-image-profile
+      (callParrentToGoToNextStep)="callParrentToGoToNextStep($event)"
+      (callParrentToGoToPrevStep)="callParrentToGoToPrevStep($event)"/>
+    </mat-step>
+    <mat-step [stepControl]="FourFormGroup" [label]="'evaluators.internationalMemberships' | translate">
+      <app-done-add-certification-request-realestate
+      (callParrentToGoToNextStep)="callParrentToGoToNextStep($event)"
+      (callParrentToGoToPrevStep)="callParrentToGoToPrevStep($event)"/>
+    </mat-step>
+    <mat-step [stepControl]="fiveFormGroup" [label]="'evaluators.otherAttachments' | translate">
+      <app-other-attachments
+      (callParrentToGoToNextStep)="callParrentToGoToNextStep($event)"
+      (callParrentToGoToPrevStep)="callParrentToGoToPrevStep($event)"/>
+    </mat-step>
+    <ng-template matStepperIcon="phone">
+    <mat-icon>call_end</mat-icon>
+  </ng-template>
+  <ng-template matStepperIcon="chat">
+    <mat-icon>forum</mat-icon>
+  </ng-template>
+  </mat-stepper>
+</app-title-form>

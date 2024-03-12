@@ -1,0 +1,39 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="form" skipValidation>
+      <div class="text-center">
+        <span>
+          <img src="assets/img/logo-taqeem.svg" class="img-style" />
+        </span>
+        <h2 class="custom-text-head">
+          {{ "signup.logWithNfaz" | translate }}
+        </h2>
+        <p class="p-text-center mb-0">
+          {{ "signup.loginHeaderParagraph" | translate }}
+        </p>
+      </div>
+      <mat-divider></mat-divider>
+
+      <input-field
+        [label]="('signup.ID Number' | translate) + ''"
+        [placeholder]="'signup.Enter the ID number' | translate"
+        [type]="'text'"
+        [controlF]="form.get('nationalId')"
+        [id]="'nationalId'"
+      />
+
+      <!-- (buttonClick)="submit()" -->
+      <app-shared-button
+        [label]="'signup.Continue' | translate"
+        [isDisabled]="form.invalid"
+        [id]="'submitBtn'"
+      >
+      </app-shared-button>
+      <div class="text-center mt-4">
+        <a class="a-text-underline-bold" (click)="login()" [id]="'taqeemLoginLink'">
+          {{ "signup.taqeemLogin" | translate }}</a
+        >
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

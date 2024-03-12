@@ -1,0 +1,113 @@
+@if (label) {
+  <mat-label>
+    {{ label }}
+    <mat-icon color="warn" class="required-icon">*</mat-icon>
+  </mat-label>
+  }
+  <div class="p-2 mt-3 bg-light border border-light rounded">
+    <input
+      #fileUpload
+      type="file"
+      class="file"
+      (change)="onFileSelected($event)"
+      accept=".doc,.docx,.xls,.xlsx,.pdf,.jpeg,.jpg,.png"
+    />
+
+    <div class="text-center">
+      <mat-icon class="material-icons-outlined">cloud_upload</mat-icon>
+      <p>
+        <a
+          class="link-primary text-bo"
+          style="text-decoration: none"
+          (click)="fileUpload.click()"
+          role="button"
+        >
+          {{ 'shared.clickToUpload' | translate }}</a
+        >
+        {{ 'shared.orDragDrob' | translate }}
+      </p>
+
+      <p>{{ 'shared.uploadFiles' | translate }}</p>
+    </div>
+  </div>
+
+  @if(files.length !=0){
+  <div class="p-1 m-1 bg-light border border-light rounded">
+    @for( file of files; track file ; let i = $index ){
+
+    <div class="d-flex justify-content-between p-1">
+      <div class="m-2">
+        <span style="display: block">{{ file.name }} </span>
+        <span>
+          {{ file.size | fileSizeFloor }} {{ 'shared.kb' | translate }}</span
+        >
+      </div>
+
+      <div class="d-flex align-items-center">
+        <button mat-icon-button class="p-0 btn m-1" (click)="clearCurrentFile(i)">
+          <mat-icon class="delete-icon">delete_outline</mat-icon>
+        </button>
+
+        <button mat-icon-button class="p-0 btn btn-success bg-success m1">
+          <mat-icon class="done-icon">done</mat-icon>
+        </button>
+        <!--
+      <mat-progress-spinner
+        class="m-2"
+        [color]="color"
+        [mode]="mode"
+        [value]="100"
+        [diameter]="25"
+      >
+      </mat-progress-spinner> -->
+
+        <!-- <mat-spinner class="m-2" [diameter]="25" value="100"></mat-spinner> -->
+      </div>
+    </div>
+    }
+  </div>
+  <mat-error *ngIf="error" style="margin-top: 2px; font-size: 12px;">
+    <strong>{{ error | translate }}</strong>
+  </mat-error>
+  }
+  <!-- How to call  in another componenet
+
+      <app-upload-file-drag
+   [label]= "'label'" [showProgressBar]="showProgressBar" [progress]="progress"
+        (onFilesSelectedEvent)="onFileSelected($event)">
+      </app-upload-file-drag> -->
+
+  <!--
+    showProgressBar = false;
+    fileToUpload: File[] = [];
+    progress = 0;
+   -->
+  <!--
+    onFileSelected(event: File[]) {
+      this.fileToUpload = event;
+      this.upload(); // Automatically trigger the file upload
+    }
+
+    upload() {
+      if (!this.fileToUpload) {
+        return;
+      }
+
+      this.showProgressBar = true;
+
+      this.service.uploadPhoto(this.fileToUpload, 1).subscribe({
+        next: async (event) => {
+          if (event.type === HttpEventType.UploadProgress) {
+            this.progress = await Math.round((100 * event.loaded) / event.total!);
+          } else if (event instanceof HttpResponse) {
+            // File upload complete
+            this.showProgressBar = false;
+            // Handle response from the server
+          }
+        },
+        error: (error) => {
+          console.log('Error uploading file:', error);
+          this.showProgressBar = false;
+        },
+      });
+    } -->

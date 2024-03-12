@@ -1,0 +1,45 @@
+<!-- dont forget change api key in index.html  -->
+<mat-label class="pb-4">
+ {{ label }}
+  <mat-icon color="warn" class="required-icon">*</mat-icon>
+</mat-label> 
+<div class="pt-3"></div>
+
+@if(ssrLoad){
+<div>
+
+  <input-field
+  [label]="('signup.ResidencePlace' | translate) + ''"
+  [placeholder]="'signup.SearchHere' | translate"
+  [class]="'my-search-box'"
+  (keydown.enter)="$event.preventDefault()"
+  #search
+  [id]="'search'"
+  required
+/>
+</div>
+} @if(isGoogleMapsApiLoaded){
+
+<google-map
+  height="400px"
+  width="auto"
+  [center]="center"
+  [zoom]="zoom"
+  (mapClick)="addMarker($event)"
+  (mapMousemove)="move($event)"
+>
+  @for (position of markerPositions; track position) {
+  <map-marker
+    #marker="mapMarker"
+    [position]="position"
+    [options]="markerOptions"
+    (mapClick)="openInfoWindow(marker)"
+    (mapMouseover)="openInfoWindow(marker)"
+  />
+  <map-info-window>{{ currentAddress }}</map-info-window>
+  }
+</google-map>
+<mat-error *ngIf="error" style="margin-top: 2px; font-size: 12px;">
+  <strong>{{ error | translate }}</strong>
+</mat-error>
+}

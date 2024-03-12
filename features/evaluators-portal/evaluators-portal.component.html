@@ -1,0 +1,32 @@
+<side-nav>
+  <div class="backgorund-style">
+    <div class="container px-lg-5 px-md-5"  fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-around center">
+      <div class="d-inline-flex" fxFlex="20">
+        <div>
+          <img [src]="'assets/img/logo-taqeem.svg'" width="200" height="190"/>
+        </div>
+        <div class="mx-2" fxFlex="80" fxLayoutAlign="center start" fxLayout="column" fxLayout.xs="column" >
+          <h4  class="mx-lg-5 mx-md-5 fw-bold text-primary text-left ev_title">
+            {{ 'evaluators.Welcome' | translate }}
+          </h4>
+          <p class="mx-5 ev_subTitle">
+            {{ 'evaluators.WelcomeDescription' | translate }}
+          </p>
+      </div>
+      </div>
+    </div>
+  </div>
+  <!-- <widget-card [widgetCardList]="widgetCardListData"/> -->
+  <app-title-form>
+    <div class="pb-1 pt-3" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
+        <div class="px-2 fw-bold d-inline-flex" fxFlex="50">
+            <img [src]="'assets/img/myRequest.svg'" width="40" height="40"/>
+            <h3 class="fw-bold primary-color align-self-center px-2"> 
+            {{ 'evaluators.individualsPortalServices' | translate }}
+            </h3>
+        </div>
+        <div fxFlex="50"></div>
+    </div>
+    <evaluators-card [evaluatorsCardList]="evaluatorsCardListHome"/>
+  </app-title-form>
+</side-nav> 

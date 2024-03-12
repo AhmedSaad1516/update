@@ -1,0 +1,10 @@
+@import '../../../../assets/scss/matirial.scss';
+@import '../profile.component.scss';
+mat-card{
+    // max-width: 922px!important;
+    padding: 20px;
+}
+.passport_file{
+    display: flex;
+    align-items: center;
+}

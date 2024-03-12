@@ -1,0 +1,25 @@
+@if(isBrowser && Editor){
+<mat-label>
+  {{ label }}
+  <mat-icon color="warn" class="required-icon">*</mat-icon>
+  <!-- <mat-icon color="primary" class="question-icon" *ngIf="hint" matTooltipPosition="above" [matTooltip]="hint">{{ 'shared.question' | translate }}</mat-icon> -->
+</mat-label>
+<ckeditor
+  id="editor"
+  class="d-block pt-3"
+  [editor]="Editor"
+  [config]="config"
+  [formControl]="controlF"
+  data=""
+  (change)="onChange($event)"
+  (ready)="onReady($event)"
+></ckeditor>
+<mat-error *ngIf="error" style="margin-top: 2px; font-size: 12px;">
+  <strong>{{ error | translate }}</strong>
+</mat-error>
+}
+
+<!-- call it in Other Component -->
+<!-- <app-shared-ckeditor [placehoder]="'type your content here'">
+</app-shared-ckeditor>
+ -->

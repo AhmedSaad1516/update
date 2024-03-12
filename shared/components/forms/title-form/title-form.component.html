@@ -1,0 +1,14 @@
+<div [class]="backgorundStyle">
+  <div class="container px-lg-4 px-md-4">
+    <div class="d-inline-flex pt-4">
+      <!-- <img src="assets/img/title.png" width="50" height="50"/> -->
+      <img [src]="srcLink" width="40" height="40" *ngIf="title"/>
+      <h2 class="align-self-center px-lg-2 px-md-2 mb-5 fw-bold text-primary" *ngIf="title">{{title}}</h2>
+    </div>
+    <mat-card class="mb-5">
+      <mat-card-content>
+        <ng-content ></ng-content>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

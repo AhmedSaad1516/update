@@ -1,0 +1,125 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="form">
+      <div class="text-center">
+        <span>
+          <img src="assets/img/logo-taqeem.svg" class="img-style" />
+        </span>
+
+        <h2 class="custom-text-head">{{ "login.login" | translate }}</h2>
+
+        <p class="mb-0">
+          {{ "signup.loginHeaderParagraph" | translate }}
+        </p>
+      </div>
+      <mat-divider></mat-divider>
+      <div *ngIf="loginRequestSuccess==true" class="alert-box success">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2C17.523 2 22 6.478 22 12C22 17.522 17.523 22 12 22C6.477 22 2 17.522 2 12C2 6.478 6.477 2 12 2ZM12 3.667C7.405 3.667 3.667 7.405 3.667 12C3.667 16.595 7.405 20.333 12 20.333C16.595 20.333 20.333 16.595 20.333 12C20.333 7.405 16.595 3.667 12 3.667ZM11.9987 14.5022C12.5502 14.5022 12.9973 14.9494 12.9973 15.5009C12.9973 16.0524 12.5502 16.4996 11.9987 16.4996C11.4471 16.4996 11 16.0524 11 15.5009C11 14.9494 11.4471 14.5022 11.9987 14.5022ZM11.9945 7C12.3742 6.9997 12.6882 7.2816 12.7381 7.64764L12.7451 7.7494L12.7487 12.251C12.749 12.6652 12.4135 13.0013 11.9993 13.0016C11.6196 13.0019 11.3055 12.72 11.2556 12.354L11.2487 12.2522L11.2451 7.7506C11.2447 7.33639 11.5802 7.00033 11.9945 7Z" fill="#00781A"/>
+        </svg>
+        <span>
+           {{ "signup.login_request_success" | translate }} 
+      </span>
+      </div>
+      <div *ngIf="loginReByLinkSuccess==true" class="alert-box success">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2C17.523 2 22 6.478 22 12C22 17.522 17.523 22 12 22C6.477 22 2 17.522 2 12C2 6.478 6.477 2 12 2ZM12 3.667C7.405 3.667 3.667 7.405 3.667 12C3.667 16.595 7.405 20.333 12 20.333C16.595 20.333 20.333 16.595 20.333 12C20.333 7.405 16.595 3.667 12 3.667ZM11.9987 14.5022C12.5502 14.5022 12.9973 14.9494 12.9973 15.5009C12.9973 16.0524 12.5502 16.4996 11.9987 16.4996C11.4471 16.4996 11 16.0524 11 15.5009C11 14.9494 11.4471 14.5022 11.9987 14.5022ZM11.9945 7C12.3742 6.9997 12.6882 7.2816 12.7381 7.64764L12.7451 7.7494L12.7487 12.251C12.749 12.6652 12.4135 13.0013 11.9993 13.0016C11.6196 13.0019 11.3055 12.72 11.2556 12.354L11.2487 12.2522L11.2451 7.7506C11.2447 7.33639 11.5802 7.00033 11.9945 7Z" fill="#00781A"/>
+        </svg>
+        <span>
+           {{ "signup.login_req_byLink_success" | translate }} 
+      </span>
+      </div>
+     
+      <div *ngIf="loginRequestFailed==true" class="alert-box error">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C17.523 2 22 6.478 22 12C22 17.522 17.523 22 12 22C6.477 22 2 17.522 2 12C2 6.478 6.477 2 12 2ZM12 3.667C7.405 3.667 3.667 7.405 3.667 12C3.667 16.595 7.405 20.333 12 20.333C16.595 20.333 20.333 16.595 20.333 12C20.333 7.405 16.595 3.667 12 3.667ZM11.9987 14.5022C12.5502 14.5022 12.9973 14.9494 12.9973 15.5009C12.9973 16.0524 12.5502 16.4996 11.9987 16.4996C11.4471 16.4996 11 16.0524 11 15.5009C11 14.9494 11.4471 14.5022 11.9987 14.5022ZM11.9945 7C12.3742 6.9997 12.6882 7.2816 12.7381 7.64764L12.7451 7.7494L12.7487 12.251C12.749 12.6652 12.4135 13.0013 11.9993 13.0016C11.6196 13.0019 11.3055 12.72 11.2556 12.354L11.2487 12.2522L11.2451 7.7506C11.2447 7.33639 11.5802 7.00033 11.9945 7Z" fill="#D31212"/>
+          </svg>
+        <span>
+           {{ "signup.login_request_failed" | translate }} 
+      </span>
+      </div>
+      <div *ngIf="errorIs==true" class="alert-box error">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C17.523 2 22 6.478 22 12C22 17.522 17.523 22 12 22C6.477 22 2 17.522 2 12C2 6.478 6.477 2 12 2ZM12 3.667C7.405 3.667 3.667 7.405 3.667 12C3.667 16.595 7.405 20.333 12 20.333C16.595 20.333 20.333 16.595 20.333 12C20.333 7.405 16.595 3.667 12 3.667ZM11.9987 14.5022C12.5502 14.5022 12.9973 14.9494 12.9973 15.5009C12.9973 16.0524 12.5502 16.4996 11.9987 16.4996C11.4471 16.4996 11 16.0524 11 15.5009C11 14.9494 11.4471 14.5022 11.9987 14.5022ZM11.9945 7C12.3742 6.9997 12.6882 7.2816 12.7381 7.64764L12.7451 7.7494L12.7487 12.251C12.749 12.6652 12.4135 13.0013 11.9993 13.0016C11.6196 13.0019 11.3055 12.72 11.2556 12.354L11.2487 12.2522L11.2451 7.7506C11.2447 7.33639 11.5802 7.00033 11.9945 7Z" fill="#D31212"/>
+          </svg>          
+        <span>
+           {{ errorMessages }} 
+      </span>
+      </div>
+      <div *ngIf="codeLimitEnd==true" class="alert-box error">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C17.523 2 22 6.478 22 12C22 17.522 17.523 22 12 22C6.477 22 2 17.522 2 12C2 6.478 6.477 2 12 2ZM12 3.667C7.405 3.667 3.667 7.405 3.667 12C3.667 16.595 7.405 20.333 12 20.333C16.595 20.333 20.333 16.595 20.333 12C20.333 7.405 16.595 3.667 12 3.667ZM11.9987 14.5022C12.5502 14.5022 12.9973 14.9494 12.9973 15.5009C12.9973 16.0524 12.5502 16.4996 11.9987 16.4996C11.4471 16.4996 11 16.0524 11 15.5009C11 14.9494 11.4471 14.5022 11.9987 14.5022ZM11.9945 7C12.3742 6.9997 12.6882 7.2816 12.7381 7.64764L12.7451 7.7494L12.7487 12.251C12.749 12.6652 12.4135 13.0013 11.9993 13.0016C11.6196 13.0019 11.3055 12.72 11.2556 12.354L11.2487 12.2522L11.2451 7.7506C11.2447 7.33639 11.5802 7.00033 11.9945 7Z" fill="#D31212"/>
+          </svg>          
+        <span>
+          {{ "signup.code_limit_enddd" | translate }} 
+      </span>
+      </div>
+     
+      <input-field
+        [label]="('signup.EmailOrIDNumberLabel' | translate) + ''"
+        [placeholder]="'signup.EmailOrIDNumberPlacholder' | translate"
+        [controlF]="form.get('email')"
+        [id]="'email'"
+      />
+      <input-field
+        [label]="('signup.Password' | translate) + ''"
+        [placeholder]="'signup.EnterPassword' | translate"
+        [controlF]="form.get('password')"
+        [type]="'password'"
+        [id]="'password'"
+      />
+      <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutAlign="space-between stretch"
+        class="mb-4"
+      >
+        <span>
+          <mat-checkbox
+            class="example-margin"
+            [color]="'primary'"
+            id="remember_me"
+            >{{ "signup.Remember me" | translate }}</mat-checkbox
+          >
+        </span>
+        <span>
+          <a
+            class="a-text-underline-bold"
+            (click)="resetPassword()"
+            id="forgetPasswordLink"
+          >
+            {{ "signup.Forgot your password" | translate }}</a
+          >
+        </span>
+      </div>
+      <div class="mb-16">
+        <app-shared-button
+          [label]="'login.login' | translate"
+          (buttonClick)="submit()"
+          [isDisabled]="!form.valid"
+          [id]="'submitBtn'"
+        >
+        </app-shared-button>
+      </div>
+    </form>
+    <div class="mb-24">
+      <app-shared-button
+        [label]="'login.loginViaNfaz' | translate"
+        (buttonClick)="loginViaNfaz()"
+        [className]="'btn-nfaz'"
+        [id]="'loginViaNfazBtn'"
+      >
+      </app-shared-button>
+    </div>
+
+    <div class="text-center">
+      <a
+        class="a-text-underline-bold"
+        (click)="recoverData()"
+        [id]="'recoverDataLink'"
+      >
+        {{ "signup.CreateaccountOrRetrieveData" | translate }}
+      </a>
+    </div>
+  </mat-card-content>
+</mat-card>

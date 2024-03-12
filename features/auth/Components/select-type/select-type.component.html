@@ -1,0 +1,28 @@
+<div class="select-type container">
+  <!-- <h3>{{ "login.loginWay" | translate }}</h3> -->
+  <ul class="cards">
+    @for (item of users; track item.id) {
+    <li class="item" >
+
+      <figure>
+        <img [src]="item.imgIcon" alt="" srcset="" />
+      </figure>
+      <div class="item-text">
+
+        <h4>{{ item.title | translate }}</h4>
+        <p>
+          {{ item.desciption | translate }}
+        </p>
+        <a >
+        <span >
+          {{'signup.EnterThePortal' | translate}}
+        </span>  
+          <img src="./../../../../../assets/icons/left-top-arrow.svg" alt="">
+        </a>
+      </div>
+      
+    </li>
+    }
+  </ul>
+  <p class="note">{{ "login.loginNote" | translate }}</p>
+</div>

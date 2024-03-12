@@ -1,0 +1,61 @@
+<h1 mat-dialog-title>Edit Image:</h1>
+
+<div mat-dialog-content>
+  <div class="row p-5">
+    <div class="col-12">
+      <image-cropper
+        [imageFile]="data.file"
+        [autoCrop]="false"
+        [transform]="transform"
+      ></image-cropper>
+
+      <!-- <image-cropper
+    [imageChangedEvent]="imageChangedEvent"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="4 / 3"
+    format="png"
+    (imageCropped)="imageCropped($event)"
+    (imageLoaded)="imageLoaded($event)"
+    (cropperReady)="cropperReady()"
+    (loadImageFailed)="loadImageFailed()"
+></image-cropper> -->
+    </div>
+  </div>
+</div>
+
+<div mat-dialog-actions class="d-flex justify-content-center">
+  <!-- <mat-slider
+    class="zoom-slider"
+    [min]="max * -1"
+    [max]="max"
+    step="0.1"
+    [value]="zoom"
+    (input)="onSliderChange($event)"
+  ></mat-slider> -->
+
+  <!-- <mat-slider class="zoom-slider" [min]="max * -1" [max]="max"  step="0.1"  >
+    <input matSliderThumb (input)="onSliderChange(0)"  [(ngModel)]="zoom">
+  </mat-slider> -->
+
+  <!-- <mat-slider min="1" max="5" step=".5"  >
+    <input matSliderThumb  (input)="onSliderChange()" [(ngModel)]="zoom">
+  </mat-slider> -->
+
+  <mat-slider
+  class="example-margin"
+  [disabled]="disabled"
+  [max]="max"
+  [min]="max * -1"
+  [step]="step"
+  [discrete]="thumbLabel"
+  [showTickMarks]="showTicks">
+<input matSliderThumb [(ngModel)]="value" #slider (input)="onSliderChange()">
+</mat-slider>
+</div>
+
+<div mat-dialog-actions class="d-flex justify-content-end">
+  <button mat-button class="dnet-button-wizard-back" (click)="onClose()">Close</button>
+  <button mat-button class="dnet-button-wizard-next" (click)="onAccept()">
+    Accept
+  </button>
+</div>

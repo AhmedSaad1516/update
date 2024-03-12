@@ -1,0 +1,145 @@
+
+<h3 class="fw-bold" *ngIf="isShowJusticeReturnData">{{'assetInformation.title' | translate}} ({{'assetInformation.dataRetrievalMinistryJustice' | translate}})</h3>
+<h3 class="fw-bold" *ngIf="!isShowJusticeReturnData">{{'assetInformation.title' | translate}} ({{'assetInformation.manualEntry' | translate}})</h3>
+
+<mat-divider></mat-divider>
+  <form
+  [formGroup]="assetInformationForm"
+  novalidate
+  (ngSubmit)="$event.preventDefault(); addAsset()">
+  <!-- <div *ngIf="isShowJusticeReturnData">
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between stretch" class="pt-3" fxLayoutGap="20">
+      <div fxFlex="33">
+        <input-field
+        [label]="'رقم المخطط'"
+        [placeholder]="'2727'"
+        [controlF]="getFormGroup('senderName20')"/>
+      </div>
+      <div fxFlex="33">
+        <input-field
+        [label]="'الرقم الفرعي'"
+        [placeholder]="'8109'"
+        [controlF]="getFormGroup('senderName21')"/>
+      </div>
+      <div fxFlex="33">
+        <input-field
+        [label]="'رقم القطعة'"
+        [placeholder]="'13321'"
+        [controlF]="getFormGroup('senderName22')"/>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between stretch" class="pt-3" fxLayoutGap="20">
+      <div fxFlex="33">
+        <input-field
+        [label]="'الشارع'"
+        [placeholder]="'انس بن مالك'"
+        [controlF]="getFormGroup('senderName23')"/>
+      </div>
+      <div fxFlex="33">
+        <input-field
+        [label]="'الحي'"
+        [placeholder]="'حي الصحافة'"
+        [controlF]="getFormGroup('senderName24')"/>
+      </div>
+      <div fxFlex="33">
+        <input-field
+        [label]="'المدينة'"
+        [placeholder]="'الرياض'"
+        [controlF]="getFormGroup('senderName25')"/>
+      </div>
+    </div>
+  </div> -->
+  <!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" class="pt-3" >
+    <div fxFlex="100">
+      <input-field
+      [label]="'assetInformation.assetDeedNumber' | translate"
+      [placeholder]="'assetInformation.assetDeedNumberDescription' | translate"
+      [error]="requestValidation.OWNERSHIP_NUMBER_VALIDATION_MESSAGE"
+      [controlF]="getFormGroup('ownershipNumber')"/>
+    </div>
+  </div> -->
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between stretch" class="pt-1">
+    <div fxFlex="49" *ngIf="realestateTypeList | async as realestateTypeListData">
+      <select-field
+      [label]="'assetInformation.subjectAssetType' | translate"
+      [placeholder]="'assetInformation.subjectAssetTypeDescription' | translate"
+      [options]="realestateTypeListData"
+      [error]="requestValidation.OWNERSHIP_NUMBER_VALIDATION_MESSAGE"
+      [controlF]="getFormGroup('realestateTypeId')"
+      (selectChange)="hideShowAssetAge()"
+      [dataTestId]="'realestateTypeId'"/>
+    </div>
+    <div fxFlex="49" *ngIf="realestateUsageList | async as realestateUsageListData">
+      <select-field
+      [label]="'assetInformation.currentUsageSubjectAsset' | translate"
+      [placeholder]="'assetInformation.currentUsageSubjectAssetDescription' | translate"
+      [options]="realestateUsageListData"
+      [error]="requestValidation.OWNERSHIP_NUMBER_VALIDATION_MESSAGE"
+      [controlF]="getFormGroup('realestateUsageId')"
+      [dataTestId]="'realestateUsageId'"/>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayout.xs="column" class="pt-1" >
+    <div fxFlex="100">
+      <app-shared-map (getLocationEvent)="getLocation($event)"
+      [label]="'assetInformation.assetLocation' | translate"
+      [error]="requestValidation.OWNERSHIP_NUMBER_VALIDATION_MESSAGE"
+      [dataTestId]="'assetLocation'"></app-shared-map>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayout.xs="column">
+    <div fxFlex="100">
+      <view-map [googleMapAddress]="googleMapAddress"/>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between stretch" class="pt-1">
+    <div fxFlex="49" *ngIf="showAssetAge">
+      <input-field
+      [label]="'assetInformation.assetAge' | translate"
+      [placeholder]="'assetInformation.assetAgeDescription' | translate"
+      [suffix]="'suffix.years' | translate"
+      [type]="'number'"
+      [error]="requestValidation.OWNERSHIP_NUMBER_VALIDATION_MESSAGE"
+      [controlF]="getFormGroup('realestateAgeDays')"
+      [dataTestId]="'realestateAgeDays'"/>
+    </div>
+    <div [fxFlex]="fxFlexAreaSize">
+      <input-field
+      [label]="'assetInformation.areaSize' | translate"
+      [placeholder]="'assetInformation.areaSizeDescription' | translate"
+      [suffix]="'suffix.squareMeters' | translate"
+      [error]="requestValidation.OWNERSHIP_NUMBER_VALIDATION_MESSAGE"
+      [controlF]="getFormGroup('realestateArea')"
+      [dataTestId]="'realestateArea'"/>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between stretch" class="pt-2" *ngIf="!isShowJusticeReturnData">
+    <div fxFlex="100">
+    <app-upload-file-drag
+      [label]= "'assetInformation.assetDeedDocument' | translate"
+      [showProgressBar]="showProgressBar"
+      [progress]="progress"
+      [error]="requestValidation.OWNERSHIP_NUMBER_VALIDATION_MESSAGE"
+      (onFilesSelectedEvent)="onFileSelected($event)"
+      [dataTestId]="'file'"
+      [dataTestIdBtn]="'fileBtn'"
+      [dataTestIdLink]="'fileLink'">
+    </app-upload-file-drag>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-evenly stretch" class="pb-2 pt-2 px-1" *ngIf="!isOneRealEstate">
+    <cancel-button
+      fxFlex="50"
+      [label]="'shared.back' | translate"
+      [dataTestId]="'back'">
+    </cancel-button>
+    <cancel-button
+      fxFlex="50"
+      fxLayoutAlign="end"
+      [label]="'shared.save' | translate"
+      [isDisabled]="assetInformationForm.invalid"
+      color="primary"
+      [dataTestId]="'save'">
+    </cancel-button>
+  </div>
+</form>

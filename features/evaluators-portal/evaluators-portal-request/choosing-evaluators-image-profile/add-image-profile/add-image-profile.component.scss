@@ -1,0 +1,232 @@
+.image-container {
+    display: flex;
+    // justify-content: flex-end;
+    align-items: center;
+  }
+  .mat-mdc-card{
+    box-shadow: none;
+  }
+  .profile-image {
+    width: 100px;
+    height: 100px;
+   position: relative;
+   .defult_avatar{
+    cursor: pointer;
+   }
+   .camira_icon{
+    position: absolute;
+    left: 12px;
+    bottom: 18px;
+    width: 33px;
+   }
+  }
+  .avatar_text{
+    // margin-right: 20px;
+  }
+  .profile-image span {
+    font-size: 12px;
+    text-align: center;
+  }
+  
+  .image-info {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  .upload-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .upload-box {
+    border: 2px dashed gray;
+    padding: 20px;
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .buttons {
+    margin-top: 20px;
+  }
+
+  .image-container {
+    // تخطيط الصورة والمعلومات المرتبطة بها
+  }
+  
+  .profile-image {
+    // تنسيق الصورة الافتراضية والنص المرتبط بها
+  }
+  
+  .image-preview {
+    // تنسيق معاينة الصورة المرفقة
+  }
+  
+  .buttons {
+    // تنسيق الأزرار (تغيير الصورة وحذف الصورة)
+  }
+  
+  // أضف أي تنسيقات إضافية حسب الحاجة
+
+  .profile-picture-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    border: 2px dashed gray;
+    margin-bottom: 20px;
+    position: relative;
+  
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      cursor: pointer;
+    }
+  
+    .placeholder {
+      color: gray;
+      cursor: pointer;
+    }
+  }
+  
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    button {
+      margin: 0 5px;
+    }
+  }
+
+  .img_prev_title{
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 15px;
+  }
+  .img_prev_container{
+    width: 45%;
+    height: 330px;
+    border: solid 1px #1B4681;
+    position: relative;
+    margin: auto;
+    .logo_taqeem{
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      height: 40px;
+    }
+    .img_info{
+      padding: 30px 0;
+      color: #424143;
+      text-align: center;
+      width: 65%;
+      margin: auto;
+    }
+
+  }
+  .image-upload-container {
+    position: relative;
+    width: 145px;
+    height: 160px;
+    margin: auto;
+    margin-top: 19%;
+    cursor: pointer;
+    display: block;
+    overflow: hidden;
+    border: solid 3px #1B4681;
+    .div1{
+      width: 70%;
+    height: 30px;
+    background-color: #0FA69C;
+    position: absolute;
+    top: 68%;
+    z-index: 999
+    }
+    .div2{
+      width: 100%;
+      height: 30px;
+      background-color: #1B4681;
+      position: absolute;
+      top: 84%;
+      z-index: 99;
+    }
+    .div3{
+      width: 70%;
+      height: 30px;
+      background-color: #fff;
+      position: absolute;
+      top: 84%;
+      z-index: 990;
+    }
+  }
+  
+  .image-upload-container img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+
+  
+  .zoom-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 35%;
+    margin: auto;
+    margin-top: 25px;
+  }
+  mat-slider {
+    width: 300px;
+    padding: 0;
+    margin: 0;
+    margin-left: -10px;
+  }
+
+  .img_prev_btns{
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    width: 28%;
+    span{
+      cursor: pointer;
+    }
+    svg{
+      margin: 8px;
+    }
+  }
+  
+  .save_btn{
+    padding: 10px;
+  }
+  
+  ::ng-deep.cdk-overlay-pane{
+    width: 60% !important;
+    height: 85% !important;
+  }
+/////////////////////////////////////////
+
+.zoom-slider {
+  width: 100%;
+  max-width: 500px;
+}
+
+.mat-button.dnet-button-wizard-next {
+  background-color: #fa804f;
+  color: #ffffff;
+  border-radius: 0;
+}
+
+.mat-button.dnet-button-wizard-back {
+  background-color: #f5f5f5;
+  color: #5f6368;
+  border-radius: 0;
+}
+
+

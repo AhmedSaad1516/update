@@ -1,0 +1,127 @@
+table, mat-paginator {
+    width: 100%;
+    // background-color: #EDEFF0 !important;  
+    border-color: #E0DFE0 !important;
+    border-width: 2px !important ;
+}
+// mat-paginator{
+//     border-collapse: collapse;
+//     border-bottom-right-radius: 1em;
+//     border-bottom-left-radius: 1em;
+// }
+
+.mat-mdc-form-field {
+font-size: 14px;
+width: 100%;
+}
+
+mat-table mat-header-cell {
+border-color: #E0DFE0 !important;
+border-top-width: 1px !important ;
+font-weight: 700;
+}
+
+mat-table mat-header-row {
+    background-color: #FBFBFB !important;
+}
+
+.mdc-data-table__row:last-child .mat-mdc-cell {
+    border-bottom: 1px solid #ddd;
+}
+
+::ng-deep .custom-badge{
+    padding: 4px 8px;
+    text-align: center;
+    border-radius: 25px; 
+    display: inline-block;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 6px;
+}
+
+::ng-deep .custom-danger{
+    background-color: rgba(220, 53, 70, 0.1);
+    color: #dc3545;
+    border: 1px solid #dc3545ed;
+}
+::ng-deep .custom-warning{
+    background-color: rgba(255, 193, 7, 0.1);;
+    color: #ffc107;
+    border: 1px solid #ffc107;
+}
+::ng-deep .custom-info{
+    background-color: rgba(0, 123, 255, 0.1);;
+    color: #007bff;
+    border: 1px solid #007bff;
+}
+
+::ng-deep .custom-success{
+    background-color: rgba(40, 167, 70, 0.1);
+    color: #28a745;
+    border: 1px solid #28a745;
+}
+
+@media (max-width: 768px) {
+
+    mat-table {
+        border: 0;
+        vertical-align: middle
+    }
+
+    mat-table caption {
+        font-size: 1em;
+    }
+    mat-table mat-header-cell{
+        overflow: auto !important;
+    }
+    // Enable this to hide header
+    mat-table mat-header-cell {   
+        border: 10px solid;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    mat-table mat-header-row {   
+        display: table-cell !important;
+    }
+
+    mat-table mat-row {
+        border-bottom: 5px solid #ddd;
+        display: block;
+    }
+    /*
+    .mat-table .mat-row:nth-child(even) {background: #CCC}
+    .mat-table .mat-row:nth-child(odd) {background: #FFF}
+    */
+    mat-table mat-cell {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: 1em;
+        text-align: left;
+        height: 30px;
+        margin-bottom: 4%;
+    }
+    mat-table mat-cell:before {
+        /*
+        * aria-label has no advantage, it won't be read inside a table
+        content: attr(aria-label);
+        */
+        content: attr(data-label);
+        font-weight: bold;
+        float: right;
+    }
+    mat-table mat-cell:last-child {
+        border-bottom: 1px solid #ddd;;
+        padding-right: 16px !important;
+        padding-left: 16px !important;
+    }
+        mat-table mat-cell:first-child {
+        margin-top: 4%;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+}

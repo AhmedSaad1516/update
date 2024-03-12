@@ -1,0 +1,85 @@
+<!-- @if (type === 'password'){ -->
+<div *ngIf="(valuationRequestInformation | async)?.length !== 0">
+  <div *ngIf="(valuationRequestInformation | async) as valuationRequestInformationData" >
+    <h3 class="fw-bold pt-4">{{ 'valuationRequestInformation.title' | translate }}</h3>
+    <mat-divider class="pb-2"></mat-divider>
+    <div class="row">
+      <div class="col-sm-6">{{ 'valuationRequestInformation.valuationRequestTitle' | translate }}  :  <strong>{{valuationRequestInformationData[0].applicationRequestDTO.valuationTitle}}</strong></div>
+      <div class="col-sm-6">{{ 'valuationRequestInformation.purposeValuation' | translate }}  :  <strong>{{valuationRequestInformationData[0].applicationRequestDTO.purposeValuation?.nameAr}}</strong></div>
+    </div>
+    <div class="row pt-4" >
+      <div class="col-sm-6">{{ 'assetInformation.numberAsset' | translate }}  :  <strong>{{valuationRequestInformationData[0].applicationRequestDTO.isOneAsset ? '2' : '1'}}</strong></div>
+      <div class="col-sm-6">{{ 'valuationRequestInformation.cancellationDurationValuationRequest' | translate }}  :  <strong>{{valuationRequestInformationData[0].applicationRequestDTO.cancellationDurationValuationDate | date}}</strong></div>
+    </div>
+    <div class="row pt-4" >
+      <div class="col-sm-12">{{ 'valuationRequestInformation.valuationRequestDescription' | translate }}  :  <strong [innerHTML]="valuationRequestInformationData[0].applicationRequestDTO.description"></strong></div>
+    </div>
+
+    <h3 class="fw-bold pt-4">{{ 'assetInformation.title' | translate }}</h3>
+    <mat-divider class="pb-2"></mat-divider>
+    <div *ngIf="valuationRequestInformationData[0].realEstateDTOList?.length === 1">
+      <div class="row">
+        <div class="col-sm-6">{{ 'assetInformation.assetDeedNumber' | translate }}  :  <strong>{{valuationRequestInformationData[0].realEstateDTOList ? valuationRequestInformationData[0].realEstateDTOList[0].ownershipNumber : ''}}</strong></div>
+        <div class="col-sm-6">{{ 'assetInformation.subjectAssetTypeTable' | translate }}  :  <strong>{{valuationRequestInformationData[0].realEstateDTOList ? valuationRequestInformationData[0].realEstateDTOList[0].realestateType?.nameAr : ''}}</strong></div>
+      </div>
+      <div class="row pt-4" >
+        <div class="col-sm-6">{{ 'assetInformation.currentUsageSubjectAssetTable' | translate }}  :  <strong>{{valuationRequestInformationData[0].realEstateDTOList ? valuationRequestInformationData[0].realEstateDTOList[0].realestateUsage?.nameAr :''}}</strong></div>
+        <div class="col-sm-6">{{ 'assetInformation.areaSize' | translate }}  :  <strong>{{valuationRequestInformationData[0].realEstateDTOList ? valuationRequestInformationData[0].realEstateDTOList[0].realestateArea : ''}}</strong></div>
+      </div>
+      <div class="row pt-4" >
+        <div class="col-sm-6">{{ 'assetInformation.assetDeedDocument' | translate }}  :  <strong>{{valuationRequestInformationData[0].realEstateDTOList ? valuationRequestInformationData[0].realEstateDTOList[0].ownershipFilePath : ''}}</strong></div>
+        <div class="col-sm-6">{{ 'assetInformation.assetLocation' | translate }}  :  <strong>{{valuationRequestInformationData[0].realEstateDTOList ? valuationRequestInformationData[0].realEstateDTOList[0].googleExtraInfo : ''}}</strong></div>
+      </div>
+    </div>
+    <div class="row" *ngIf="valuationRequestInformationData[0].realEstateDTOList?.length !== 1">
+        <data-table [dataSourceTable]="valuationRequestInformationData[0].realEstateDTOList" [displayedColumns]="displayedColumns" [isFilter]="isFilter" />
+    </div>
+
+    <h3 class="fw-bold pt-4">{{ 'valuationOrganization.title' | translate }}</h3>
+    <mat-divider class="pb-2"></mat-divider>
+
+    <div class="row" >
+      <div class="col-sm-6">{{ 'valuationOrganization.chooseOrganization' | translate }}  :  <strong>{{valuationRequestInformationData[0].applicationRequestDTO.isDynamic? 'تلقائيا':'يدويا'}}</strong></div>
+      <div class="col-sm-6">{{ 'valuationOrganization.automaticSelectionOfferDuration' | translate }}  :  <strong>{{valuationRequestInformationData[0].applicationRequestDTO.automaticSelectionOfferDuration}}</strong></div>
+    </div>
+    <div class="row pt-4" >
+      <div class="col-sm-6">{{ 'valuationOrganization.reportDeliveryDate' | translate }}  :  <strong>{{valuationRequestInformationData[0].applicationRequestDTO.reportDeliveryDate | date}}</strong></div>
+      <div class="col-sm-6">{{ 'valuationOrganization.numberRequiredValuationReports' | translate }}  :  <strong>{{valuationRequestInformationData[0].applicationRequestDTO.numberOfReports}}</strong></div>
+    </div>
+    <div class="row pt-4" >
+      <div class="col-sm-6">{{ 'valuationOrganization.title' | translate }}  :  </div>
+    </div>
+    <div class="row pt-2 pb-3" >
+      <div class="col-sm-12">
+        <span class="custom-badge custom-gray text-left align-self-center">{{title}}</span>&nbsp;
+        <span class="custom-badge custom-gray text-left align-self-center">{{title1}}</span>&nbsp;
+        <span class="custom-badge custom-gray text-left align-self-center">{{title2}}</span>
+      </div>
+    </div>
+
+
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="end end" class="pt-3" fxLayoutGap="20" *ngIf="valuationRequestInformationData[0].applicationRequestDTO.isOneAsset">
+        <cancel-button
+        fxFlex="70"
+        fxLayoutAlign="start start"
+        [label]="'shared.back' | translate"
+        (buttonClick)="goToBack()"
+        [dataTestId]="'back'">
+      </cancel-button>
+        <cancel-button
+          fxFlex="8"
+          [label]="'shared.cancel' | translate"
+          (buttonClick)="goToHome()"
+          [dataTestId]="'cancel'">
+        </cancel-button>
+        <app-shared-button
+          fxFlex="22"
+          class="d-grid"
+          [label]="'shared.reviewConfirmRequest' | translate"
+          [showSpinner]="showSpinner"
+          (buttonClick)="submitForm()"
+          [dataTestId]="'submit'">
+        </app-shared-button>
+    </div>
+  </div>
+</div>

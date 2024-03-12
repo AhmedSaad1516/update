@@ -1,0 +1,36 @@
+@import "../../../../../assets/scss/matirial.scss";
+
+::ng-deep code-input span input {
+  width: 56px !important;
+  height: 56px  !important;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  background-color: #FBFBFB!important;
+}
+::ng-deep code-input span input.has-value {
+  width: 56px !important;
+  height: 56px  !important;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  background-color: #FBFBFB!important;
+  border-color: #1A4681!important;
+}
+//     border: 1px solid  #D31212!important;
+//   background-color: #FFF0F0 !important;
+mat-card{
+  box-shadow: none;
+  height: fit-content;
+  // margin: 0;
+  // margin: 2em auto;
+  // margin-top: 6em;
+}
+.backToSignup{
+  margin-top: 15px;
+}
+.error-message{
+  color: var(--mat-form-field-error-text-color);
+  text-align: center;
+  font-size: 12px;
+}

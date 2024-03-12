@@ -1,0 +1,100 @@
+<alert *ngIf="messageError" [message]="messageError" [type]="typeError"/>
+<!-- <h3 class="fw-bold pt-3 pb-4">{{ 'valuationOrganization.title' | translate }}</h3> -->
+<form
+novalidate
+[formGroup]="choosingValuationOrganizationForm">
+<!-- (ngSubmit)="$event.preventDefault(); submitForm()" -->
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between stretch" class="pt-3">
+  <div fxFlex="100">
+    <radio-button
+    [label]="'valuationOrganization.chooseSpecificValuationOrganizationAsset' | translate"
+    [radios]="radios"
+    [hint]="'valuationOrganization.chooseSpecificValuationOrganizationAssetHint' | translate"
+    (radioChange)="changeRadio()"
+    [error]="valuationRequestInformationValidation.DYNAMIC_DISTRIBUTION_REQUEST_DURATION_MESSAGE"
+    [controlF]="getFormGroup('isDynamic')"
+    [dataTestId]="'isDynamic'"/>
+  </div>
+</div>
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between stretch" class="pt-3" *ngIf="radioValue === '2'">
+  <div fxFlex="100">
+    <selection-list-view
+    [label]="'valuationOrganization.title' | translate"
+    [typesOfShoes]="typesOfShoes"
+    [hint]="'valuationOrganization.titleHint' | translate"
+    [error]="valuationRequestInformationValidation.DYNAMIC_DISTRIBUTION_REQUEST_DURATION_MESSAGE"
+    [controlF]="getFormGroup('applicationValuationOrganizationDTOList')"
+    [dataTestId]="'applicationValuationOrganizationDTOList'"/>
+  </div>
+</div>
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch" class="pt-3" fxLayoutGap="20" *ngIf="radioValue === '1'">
+  <div fxFlex="49">
+    <input-field
+    [label]="'valuationOrganization.automaticSelectionOfferDuration' | translate"
+    [placeholder]="'valuationOrganization.automaticSelectionOfferDuration' | translate"
+    [suffix]="'suffix.days' | translate"
+    [type]="'number'"
+    [error]="valuationRequestInformationValidation.AUTOMATIC_SELECTION_OFFER_DURATION"
+    [hint]="'valuationOrganization.automaticSelectionOfferDurationHint' | translate"
+    [controlF]="getFormGroup('automaticSelectionOfferDuration')"
+    [dataTestId]="'automaticSelectionOfferDuration'"/>
+  </div>
+</div>
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch" class="pt-3" fxLayoutGap="20" >
+    <div fxFlex="49" >
+      <app-date-picker
+        [label]="'valuationOrganization.reportDeliveryDate' | translate"
+        [placeholder]="'valuationOrganization.reportDeliveryDateDescription' | translate"
+        [hint]="'valuationOrganization.reportDeliveryDateHint' | translate"
+        [type]="'date'"
+        [error]="valuationRequestInformationValidation.AUTOMATIC_SELECTION_OFFER_DURATION"
+        [controlF]="getFormGroup('reportDeliveryDate')"
+        [dateType]="'en'"
+        [dataTestId]="'reportDeliveryDate'"
+      />
+    </div>
+    <div fxFlex="26" fxLayoutAlign="space-between center">
+      <checkbox
+      [label]="'valuationOrganization.requestOneReport' | translate"
+      [controlF]="getFormGroup('requestOneReport')"
+      (checkChange)="checkChange()"
+      [dataTestId]="'requestOneReport'"
+      />
+    </div>
+    <div fxFlex="23" *ngIf="!checkValue">
+      <input-field
+        [label]="'valuationOrganization.numberRequiredValuationReports' | translate"
+        [placeholder]="'valuationOrganization.numberRequiredValuationReportsDescription' | translate"
+        [type]="'number'"
+        
+        [error]="valuationRequestInformationValidation.NUMBER_OF_REPORTS_MESSAGE"
+        [controlF]="getFormGroup('numberOfReports')"
+        [dataTestId]="'numberOfReports'"/>
+        <!-- [suffix]="'suffix.report' | translate" -->
+    </div>
+  </div>
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="end end" class="pt-3" fxLayoutGap="10">
+    <cancel-button
+    fxFlex="78"
+    fxLayoutAlign="start start"
+    [label]="'shared.back' | translate"
+    (buttonClick)="goToBack()"
+    [dataTestId]="'back'">
+  </cancel-button>
+    <cancel-button
+      fxFlex="10"
+      [label]="'shared.cancel' | translate"
+      (buttonClick)="goToHome()"
+      [dataTestId]="'cancel'">
+    </cancel-button>
+    <app-shared-button
+      fxFlex="12"
+      [label]="'shared.continue' | translate"
+      [showSpinner]="showSpinner"
+      (buttonClick)="fullForm()"
+      [isDisabled]="choosingValuationOrganizationForm.invalid"
+      [dataTestId]="'submit'">
+    </app-shared-button>
+</div>
+
+</form>

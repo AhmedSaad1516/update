@@ -1,0 +1,43 @@
+.text-center .mat-icon {
+  font-size: 40px;
+  display: contents !important;
+}
+
+.rounded {
+  background-color: #fbfbfb !important;
+  border-color: #E0DFE0 !important;
+  border-width: 1px !important;
+  border-radius: 4px !important;
+  border: 1px solid #E0DFE0 !important;
+}
+
+.file-container {
+  border: 4px dotted black;
+  width: 100%;
+  // height: 10rem;
+}
+
+.file {
+  background-color: red;
+  opacity: 0;
+  width: 100%;
+  height: 2rem;
+}
+
+.delete-icon {
+  font-size: 28px;
+}
+
+.done-icon {
+  font-size: 28px;
+  color: white;
+}
+
+.btn-circle {
+  position: relative;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  padding-left: 30px;
+
+}

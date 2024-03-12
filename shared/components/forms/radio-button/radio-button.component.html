@@ -1,0 +1,17 @@
+<mat-label>
+  {{label}}
+  <mat-icon color="warn" class="required-icon" *ngIf="isRequiredValidator">*</mat-icon>
+  <mat-icon color="primary" class="question-icon" *ngIf="hint" matTooltipPosition="above" [matTooltip]="hint">{{ 'shared.question' | translate }}</mat-icon>
+</mat-label>
+  <mat-radio-group [formControl]="controlF" class="d-flex pt-3" color="primary"  [fxLayout]="radiosLength > 4 ? 'row wrap' : 'row'" fxLayout.xs="column" fxLayoutAlign="start stretch"  fxLayoutGap="15">
+    <mat-radio-button [fxFlex]="radiosLength > 4 ? '23.6%' : '50'" class="mb-3 pt-2 pb-2" *ngFor="let radio of radios" [value]="radio.id" (change)="handleClick()">
+      <span [class]="radio.hintAr ? 'radio-card' : ''">{{lang === 'ar'? radio.nameAr : radio.nameEn}}</span>
+      <mat-hint *ngIf="radio.hintAr"><p>{{lang === 'ar'? radio.hintAr : radio.hintEn}}</p></mat-hint>
+    </mat-radio-button>
+  </mat-radio-group>
+  <mat-error *ngIf="error" style="margin-top: -10px;">
+    <strong>{{ error | translate }}</strong>
+  </mat-error>
+  <mat-error style="margin-top: -10px;" *ngIf="controlF.hasError('required') && (controlF?.invalid && controlF?.dirty || controlF?.touched)">
+    {{label}} <strong>{{ 'valdation.required' | translate }}</strong>
+  </mat-error>

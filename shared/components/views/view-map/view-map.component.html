@@ -1,0 +1,78 @@
+<div class="row" *ngIf="googleMapAddress" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start start">
+  <div class="col-4">
+    <mat-list role="list">
+      <mat-list-item role="listitem">
+        <mat-icon class="text-light">assistant_photo</mat-icon> 
+        <span class="px-1">{{'shared.country' | translate}} :   </span>
+        <strong>{{googleMapAddress.googleCountryName}}</strong>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item role="listitem">
+        <mat-icon class="text-light">gps_fixed</mat-icon> 
+        <span class="px-1">{{'shared.district' | translate}} :   </span>
+        <strong>{{googleMapAddress.googleDistrictName}}</strong>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item role="listitem">
+        <mat-icon class="text-light">business</mat-icon> 
+        <span class="px-1">{{'shared.buildingNumber' | translate}} :   </span>
+        <strong>{{googleMapAddress.googleBuildingNumber}}</strong>
+      </mat-list-item>
+    </mat-list>
+  </div>
+  <div class="col-4">  
+    <mat-list role="list">
+      <mat-list-item role="listitem">
+        <mat-icon class="text-light">map</mat-icon> 
+        <span class="px-1">{{'shared.region' | translate}} :   </span>
+        <strong>{{googleMapAddress.googleRegionName}}</strong>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item role="listitem">
+        <mat-icon class="text-light">streetview</mat-icon> 
+        <span class="px-1">{{'shared.street' | translate}} :   </span>
+        <strong>{{googleMapAddress.googleStreetName}}</strong>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item role="listitem">
+        <mat-icon class="text-light">inbox</mat-icon> 
+        <span class="px-1">{{'shared.postalCode' | translate}} :   </span>
+        <strong>{{googleMapAddress.googlePostalCode}}</strong>
+      </mat-list-item>
+    </mat-list>
+  </div>
+  <div class="col-4">  
+    <mat-list role="list">
+      <mat-list-item role="listitem">
+        <mat-icon class="text-light">local_library</mat-icon> 
+        <span class="px-1">{{'shared.city' | translate}} :   </span>
+        <strong>{{googleMapAddress.googleCityName}}</strong>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item role="listitem">
+        <mat-icon class="text-light">room</mat-icon> 
+        <span class="px-1">{{'shared.streetNumber' | translate}} :   </span>
+        <strong>{{googleMapAddress.googleStreetNumber}}</strong>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item role="listitem">
+        <mat-icon class="text-light">nature</mat-icon> 
+        <span class="px-1">{{'shared.line' | translate}} :   </span>
+        <strong>{{googleMapAddress.locationX + ', ' + googleMapAddress.locationY }}</strong>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>
+
+<div class="row" *ngIf="googleMapAddress" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start start">
+  <div class="col-12">
+    <mat-divider></mat-divider>
+    <mat-list role="list">
+      <mat-list-item role="listitem">
+        <mat-icon class="text-light">home</mat-icon> 
+        <span class="px-1">{{'shared.address' | translate}} :   </span>
+        <strong style="white-space: initial !important;">{{googleMapAddress.googleExtraInfo}}</strong>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>

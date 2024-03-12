@@ -1,0 +1,101 @@
+// :host ::ng-deep .mdc-text-field--outlined {
+//   background-color: #fbfbfb !important;
+//   border: 1px;
+//   // border-radius: 8px;
+// }
+// ::ng-deep .mdc-notched-outline{ height: 90% !important;}
+// ::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+//   padding-top: 12px !important;
+//   padding-bottom: 0px !important;
+// }
+::ng-deep .mdc-notched-outline__leading {
+  border-color: #E0DFE0 !important;
+  border-width: 1px !important;
+}
+
+::ng-deep .mdc-notched-outline__notch {
+  border-color: #E0DFE0 !important;
+  border-width: 1px !important;
+}
+
+::ng-deep .mdc-notched-outline__trailing {
+  border-color: #E0DFE0 !important;
+  border-width: 1px !important;
+}
+
+::ng-deep .mdc-text-field--outlined.mdc-text-field--invalid,
+::ng-deep.mat-mdc-text-field-wrapper .mdc-text-field .mdc-text-field--outlined.mdc-text-field--invalid {
+  border: 1px solid #D31212 !important;
+  border-radius: 4px !important;
+  background-color: #FFF0F0 !important;
+}
+
+:host ::ng-deep .mat-mdc-form-field-icon-suffix {
+  // padding: 0px 4px 8px 0 !important;
+  // width: 25%;
+  // background-color: #1a4681;
+  // background-color: #e9ecef;
+  color: white !important;
+  text-align: center;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+:host ::ng-deep .suffix-text {
+  overflow: visible !important;
+  width: auto !important;
+  font-size: 18px !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+  margin-bottom: -2px;
+  margin-top: 2px;
+  // font-weight: 600;
+}
+
+:host ::ng-deep .mat-mdc-form-field-icon-prefix {
+  color: #a1a0a3 !important;
+}
+
+:host ::ng-deep .mat-form-field-disabled .mdc-text-field--outlined {
+  background-color: #fbfbfb !important;
+}
+
+:host ::ng-deep .mdc-text-field--outlined {
+  background-color: #fbfbfb !important;
+  border: 1px;
+  // border-radius: 8px;
+}
+
+::ng-deep.mat-mdc-text-field-wrapper.mdc-text-field--outlined {
+  background-color: #fbfbfb !important;
+  border: 1px;
+  border-radius: 8px;
+}
+
+::ng-deep.mdc-notched-outline__leading {
+  border-width: 1px !important;
+
+}
+
+::ng-deep.mdc-notched-outline__trailing {
+  border-width: 1px !important;
+
+}
+
+::ng-deep.mat-mdc-text-field-wrapper .mdc-text-field .mdc-text-field--outlined.mdc-text-field--invalid {
+  border: 0px solid #D31212 !important;
+  border-radius: 4px !important;
+  background-color: #FFF0F0 !important;
+}
+
+::ng-deep .mdc-text-field--outlined.mdc-text-field--invalid {
+  border: 0px solid #D31212 !important;
+  border-radius: 4px !important;
+  background-color: #FFF0F0 !important;
+}
+
+::ng-deep.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix{
+  display: flex !important;
+}

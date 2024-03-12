@@ -1,0 +1,26 @@
+<mat-form-field *ngIf="isFilter">
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+</mat-form-field>
+
+<div class="example-container mat-elevation-z3">
+  <mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container *ngFor="let tableData of objectKeys(displayedColumns)" [matColumnDef]="tableData">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> {{displayedColumns[tableData] | translate}} </mat-header-cell>
+      <mat-cell *matCellDef="let row" [attr.data-label]="displayedColumns[tableData] | translate" [innerHTML]="row[tableData]"></mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="objectKeys(displayedColumns)"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: objectKeys(displayedColumns);"></mat-row>
+
+    <!-- Row shown when there is no matching data. -->
+    <mat-header-row class="mat-row" *matNoDataRow>
+      <mat-row class="mat-cell text-center pt-2 fw-bold" colspan="9"><h3>{{ 'shared.noDataFilter' | translate }}</h3></mat-row>
+    </mat-header-row>
+    <!-- [attr.colspan]="lengthColspan"   -->
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" class="pb-4" aria-label="Select page of users"></mat-paginator>
+</div>
+

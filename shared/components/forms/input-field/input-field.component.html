@@ -1,0 +1,80 @@
+<mat-label>
+  {{ label }}
+  <mat-icon color="warn" class="required-icon" *ngIf="isRequiredValidator">*</mat-icon>
+  <mat-icon color="primary" class="question-icon" *ngIf="hint" matTooltipPosition="above" [matTooltip]="hint">{{
+    'shared.question' | translate }}
+  </mat-icon>
+</mat-label>
+<mat-form-field appearance="outline" class="d-flex pt-3">
+  <mat-icon matPrefix *ngIf="prefix">{{prefix}}</mat-icon>
+  <input matInput [placeholder]="placeholder" [type]="type === 'password' ? (!show ? 'password' : 'text') : type"
+    [formControl]="controlF" [errorStateMatcher]="matcher" [class]="class" [id]="id" [attr.data-testid]="dataTestId" />
+  <mat-icon matSuffix class="suffix-text" *ngIf="suffix">{{suffix}}</mat-icon>
+  @if (type === 'password'){
+  <!-- <img
+    [src]="
+      !show
+        ? '../../../../../assets/img/eye.svg'
+        : '../../../../../assets/img/closed_eye.svg'
+    "
+    matSuffix
+    style="margin-inline-end: 8px"
+    (click)="togglePasswordVisibility()"
+    *ngIf="!showPassword"
+  /> -->
+  <svg matSuffix style="margin-inline-end: 2px;margin-top: 3px;" (click)="togglePasswordVisibility()"
+    *ngIf="!showPassword" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <path
+      d="M10.3866 8.0019C10.3866 9.3219 9.31995 10.3886 7.99995 10.3886C6.67995 10.3886 5.61328 9.3219 5.61328 8.0019C5.61328 6.6819 6.67995 5.61523 7.99995 5.61523C9.31995 5.61523 10.3866 6.6819 10.3866 8.0019Z"
+      stroke="#292829" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    <path
+      d="M7.9999 13.5119C10.3532 13.5119 12.5466 12.1252 14.0732 9.72518C14.6732 8.78518 14.6732 7.20518 14.0732 6.26518C12.5466 3.86518 10.3532 2.47852 7.9999 2.47852C5.64656 2.47852 3.45323 3.86518 1.92656 6.26518C1.32656 7.20518 1.32656 8.78518 1.92656 9.72518C3.45323 12.1252 5.64656 13.5119 7.9999 13.5119Z"
+      stroke="#292829" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+  <svg matSuffix style="margin-inline-end: 2px;margin-top: 3px;" *ngIf="showPassword"
+    (click)="togglePasswordVisibility()" xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13"
+    fill="none">
+    <path
+      d="M1.33854 1.51073L2.19187 0.664062L13.3385 11.8107L12.4919 12.6641L10.4385 10.6107C9.67188 10.8641 8.85854 10.9974 8.00521 10.9974C4.67188 10.9974 1.82521 8.92406 0.671875 5.9974C1.13188 4.82406 1.86521 3.79073 2.79854 2.97073L1.33854 1.51073ZM8.00521 3.9974C8.53564 3.9974 9.04435 4.20811 9.41942 4.58318C9.7945 4.95825 10.0052 5.46696 10.0052 5.9974C10.0055 6.22444 9.96722 6.44988 9.89188 6.66406L7.33854 4.11073C7.55272 4.03538 7.77816 3.99706 8.00521 3.9974ZM8.00521 0.997396C11.3385 0.997396 14.1852 3.07073 15.3385 5.9974C14.7944 7.37953 13.8698 8.5792 12.6719 9.4574L11.7252 8.50406C12.6471 7.86632 13.3907 7.00343 13.8852 5.9974C13.3462 4.89736 12.5095 3.97058 11.4701 3.3224C10.4306 2.67422 9.23018 2.33065 8.00521 2.33073C7.27854 2.33073 6.56521 2.45073 5.89854 2.66406L4.87188 1.64406C5.83188 1.23073 6.89188 0.997396 8.00521 0.997396ZM2.12521 5.9974C2.66417 7.09744 3.50092 8.02422 4.54036 8.67239C5.5798 9.32057 6.78023 9.66414 8.00521 9.66406C8.46521 9.66406 8.91854 9.6174 9.33854 9.52406L7.81854 7.9974C7.35465 7.94767 6.92176 7.74065 6.59186 7.41075C6.26196 7.08085 6.05493 6.64795 6.00521 6.18406L3.73854 3.91073C3.07854 4.4774 2.52521 5.18406 2.12521 5.9974Z"
+      fill="black" />
+  </svg>
+  <!-- (cerrorState(control, formState(control, form="show = !show"))) -->
+
+  } @if (controlF.hasError('email') && !controlF.hasError('required')) {
+  <mat-error>{{ 'valdation.emailValid' | translate }}</mat-error>
+  } @if (controlF.hasError('required')) {
+  <mat-error>{{ label }}
+    <strong>{{ 'valdation.required' | translate }}</strong>
+  </mat-error>
+  }
+  <!-- @if (controlF.errors['minLength'] ) {
+    <mat-error>{{ label }}
+      <strong>{{ 'valdation.minLength' | translate : {minLength : 10} }}</strong>
+    </mat-error>
+    } -->
+  @if (label === ('personalInfo.MobileNumber' | translate) &&
+  controlF.hasError('pattern')) {
+  <mat-error>{{ label }}
+    <strong>{{ 'valdation.onlyNumber' | translate }}</strong>
+  </mat-error>
+  }
+
+</mat-form-field>
+@if (controlF.touched && isValidCode(imageCode)) {
+
+<mat-error style="margin-top: -26px; margin-bottom: 7px; font-size: 12px;">
+  {{ "signup.The code is in the picture" | translate }}
+  {{ "valdation.incorrect" | translate }}
+</mat-error>
+}
+@if (controlF.touched && isValidCode(imageCode)) {
+
+<mat-error style="margin-top: -26px; margin-bottom: 7px; font-size: 12px">
+  {{ 'signup.The code is in the picture' | translate }}
+  {{ 'valdation.incorrect' | translate }}
+</mat-error>
+}
+
+<mat-error *ngIf="error" style="margin-top: -18px; font-size: 12px" aria-live="polite">
+  <strong>{{ error | translate }}</strong>
+</mat-error>

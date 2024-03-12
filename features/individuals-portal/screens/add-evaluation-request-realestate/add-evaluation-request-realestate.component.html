@@ -1,0 +1,41 @@
+<app-title-form [srcLink]="'assets/img/title.png'" [title]="'addEvaluationRequestRealestate.title' | translate">
+
+  <!-- <app-shared-stepper [steps]="steps"></app-shared-stepper> -->
+  <!-- [orientation]="(stepperOrientation | async)!" -->
+  <mat-stepper linear #stepper  labelPosition="bottom">
+    <mat-step [stepControl]="firstFormGroup" [label]="'valuationRequestInformation.title' | translate" state="phone" >
+      <app-valuation-request-information (callParrentToGoToNextStep)="callParrentToGoToNextStep($event)"
+      (callParrentToGoToPrevStep)="callParrentToGoToPrevStep($event)"
+      [requestValidation]="valuationRequestInformationValidation"/>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" [label]="'assetInformation.title' | translate">
+      <app-asset-information
+      (callParrentToGoToNextStep)="callParrentToGoToNextStep($event)"
+      (callParrentToGoToPrevStep)="callParrentToGoToPrevStep($event)"
+      [isOneRealEstate]="isOneRealEstate"
+      [requestValidation]="valuationRequestInformationValidation"/>
+    </mat-step>
+    <mat-step [stepControl]="thridFormGroup" [label]="'valuationOrganization.title' | translate">
+      <app-choosing-specific-valuation-organization
+      (callParrentToGoToNextStep)="callParrentToGoToNextStep($event)"
+      (callParrentToGoToPrevStep)="callParrentToGoToPrevStep($event)"/>
+    </mat-step>
+    <mat-step [stepControl]="FourFormGroup" [label]="'addEvaluationRequestRealestate.reviewEvaluationRequestRealestate' | translate">
+      <app-review-add-evaluation-request-realestate
+      (callParrentToGoToNextStep)="callParrentToGoToNextStep($event)"
+      (callParrentToGoToPrevStep)="callParrentToGoToPrevStep($event)"/>
+    </mat-step>
+    <mat-step [stepControl]="FiveFormGroup" [label]="'valuationOrganization.completeRequest' | translate">
+      <app-done-add-evaluation-request-realestate
+      (callParrentToGoToNextStep)="callParrentToGoToNextStep($event)"
+      (callParrentToGoToPrevStep)="callParrentToGoToPrevStep($event)"
+      [appNumber]="appNumber"/>
+    </mat-step>
+    <ng-template matStepperIcon="phone">
+    <mat-icon>call_end</mat-icon>
+  </ng-template>
+  <ng-template matStepperIcon="chat">
+    <mat-icon>forum</mat-icon>
+  </ng-template>
+  </mat-stepper>
+</app-title-form>

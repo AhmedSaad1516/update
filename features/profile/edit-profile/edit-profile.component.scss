@@ -1,0 +1,44 @@
+@import "../../../../assets/scss/matirial.scss";
+@import '../../evaluators-portal/evaluators-portal-request/choosing-evaluators-image-profile/choosing-evaluators-image-profile.component.scss';
+.edit-profile-container a:nth-last-child(1){
+    color: #000;
+    text-decoration: auto;
+}
+.edit-profile-container a{
+    color: #1A4681;
+    text-decoration: auto;
+}
+h6{
+    font-weight: bold;
+    color: #424143;
+    padding-right: 10px;
+}
+.resize-container{
+   padding: 0 !important;
+}
+::ng-deep .mdc-tab{
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+.mat-mdc-card-content{
+    min-height: 600px !important;
+}
+::ng-deep .space-card{
+    padding-top: 180px !important;
+}
+::ng-deep .mat-mdc-card{
+    margin: 0 !important;
+}
+::ng-deep mat-card{
+    max-width: 100% !important;
+}
+::ng-deep .mat-mdc-tab-labels{
+    width: 50%;
+}
+
+.email-form{
+    padding-top: 20px;
+}
+// ::ng-deep mat-label{
+//     font-weight: bold;
+// }

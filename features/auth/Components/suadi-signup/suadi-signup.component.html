@@ -1,0 +1,100 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="form" skipValidation>
+      <!-- <h1>{{'test'| translate}}</h1> -->
+      <div class="text-center">
+        <span>
+          <img src="assets/img/logo-taqeem.svg" class="img-style" />
+        </span>
+        <h2 class="custom-text-head">{{ "signup.Register" | translate }}</h2>
+        <p class="p-text-center mb-0">
+          {{ "signup.suadiRejisterHeaderParagraph" | translate }}
+       <span style="color: #1A4681;"> {{"signup.Absher" | translate }}</span>
+        </p>
+        <!-- <a class="a-text-underline" >
+          {{ "signup.Register via absher" | translate }}
+        </a> -->
+      </div>
+      <mat-divider></mat-divider>
+
+      <input-field
+        [label]="('signup.ID Number' | translate) + ''"
+        [placeholder]="'signup.Enter the ID number' | translate"
+        [type]="'text'"
+        [controlF]="form.get('nationalId')"
+        [id]="'nationalId'"
+        [error]=" form.get('nationalId')?.hasError('minlength') ?  ('valdation.minLength' | translate : { minLength: 10 }) : ''"
+        />
+      @if(form.get('nationalId')?.value !== null &&
+      form.get('nationalId')?.value[0] == 1){
+      <app-hijri-date-picker
+        [label]="('signup.Date of birth' | translate) + ''"
+        [placeholder]="'signup.Enter' | translate"
+        [type]="'date'"
+        [controlF]="form.get('DOP')"
+        [dateType]="'ar'"
+        [id]="'DOP'"
+      />
+      <!-- <ejs-datepicker [value]="selectedDate" [calendarMode]="'Islamic'"></ejs-datepicker> -->
+
+
+      } @if(form.get('nationalId')?.value !== null &&
+      form.get('nationalId')?.value[0] >1){
+
+      <app-date-picker
+        [label]="('signup.Date of birth' | translate) + ''"
+        [placeholder]="'signup.Enter' | translate"
+        [type]="'date'"
+        [controlF]="form.get('DOP')"
+        [dateType]="'en'"
+        [isDisabled]="form.get('nationalId')?.value == null ? true : false"
+        [id]="'DOP'"
+
+      />
+      }
+      <div class="d-flex pb-3">
+ 
+        @if(showRecaptch){
+
+        <ngx-recaptcha2
+          #captchaElem
+          [siteKey]="siteKey"
+          formControlName="recaptcha"
+          [type]="'image'"
+          (success)="handleSuccess($event)"
+          [lang]="'ar'"
+          id="captchaElem"
+        >
+        </ngx-recaptcha2>
+        }
+      </div>
+
+      <app-shared-button
+        [label]="'signup.Data recovery' | translate"
+        (buttonClick)="submit()"
+        [isDisabled]="!form.valid"
+        [id]="'submitBtn'"
+      >
+      </app-shared-button>
+    </form>
+    <div class="mt-3 mb-84">
+      <p class="suadiRejisterFooterParagraph">
+        {{ "signup.suadiRejisterFooterParagraph" | translate }}
+        <span>
+          <a class="a-text-underline" (click)="nonSuadiSignup()" [id]="'signupViaLink'"   >
+            {{ "signup.via this link" | translate }} 
+          </a>
+        </span>
+      </p>
+    </div>
+    <div class="text-center backToSignup">
+      <a
+        class="a-text-underline-bold"
+        (click)="backToSignup()"
+        [id]="'backToSignup'"
+      >
+        {{ "signup.backToSignup" | translate }}
+      </a>
+    </div>
+  </mat-card-content>
+</mat-card>

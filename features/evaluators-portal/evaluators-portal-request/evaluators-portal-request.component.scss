@@ -1,0 +1,96 @@
+@import "../../../../assets/scss/stepper.scss";
+mat-card {
+  max-width: 571px;
+  margin: 2em auto;
+  margin-top: 6em;
+  padding: 40px;
+}
+
+mat-form-field {
+  display: block;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+::ng-deep .mat-horizontal-stepper-header .mat-step-icon {
+  background-color: #ffffff !important;
+  border:0.5px solid #e4e7ec;
+  color: #fff0 !important;
+  margin-right: 0;
+  margin-left: 8px;
+  margin-bottom: 9px;
+}
+
+::ng-deep .mat-horizontal-stepper-header .mat-step-icon .mat-step-icon-selected {
+  background-color: #e4e7ec !important;
+  margin-right: 8px;
+  flex: none;
+  padding: 0 24px;
+  flex-direction: column;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-selected,
+::ng-deep.mat-step-header .mat-step-icon-state-edit {
+  background-color: #e4ece4 !important;
+  color: #fff0 !important;
+}
+::ng-deep .mat-step-header .mat-step-icon-state-done , ::ng-deep .mat-step-header .mat-step-icon-state-done .mat-step-icon-content{
+  background-color: #0FAA6C !important;
+  border-color: #0FAA6C !important;
+}
+
+::ng-deep .mat-step-header[ng-reflect-state="done"]  .mat-step-label.mat-step-label-active{ 
+  color: #0FAA6C !important;
+}
+
+::ng-deep .mat-step-header[ng-reflect-state="done"]::before,
+::ng-deep .mat-step-header[ng-reflect-state="done"]::after,
+::ng-deep .mat-step-header[ng-reflect-state="done"] ~ .mat-stepper-horizontal-line ~ .mat-step-header[ng-reflect-state="edit"]::after  ,
+::ng-deep .mat-step-header[ng-reflect-state="done"] + .mat-stepper-horizontal-line{ 
+  background-color: #0FAA6C !important;
+  border-color: #0FAA6C !important;
+  border-width: 3px !important;
+  border-top-width: 3px !important;
+}
+
+::ng-deep .mat-step-label.mat-step-label-active{ 
+  font-weight: 700 !important;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-state-done .mat-icon {
+  color: white !important;
+  display: inline-table !important;
+  margin-top: -4px !important;
+  margin-right: -4px !important;
+}
+
+::ng-deep.mat-step-icon-content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  height: 8px;
+  width: 8px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+::ng-deep .mdc-checkbox__background{
+  border-radius: 4px !important;
+  display: flex;
+}
+
+.mat-horizontal-stepper-header-container{
+  align-self: center !important;
+  max-width: 50% !important;
+}
+
+::ng-deep .mat-step-text-label {
+  white-space: initial !important;
+}
+
+::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header {
+  padding: calc((var(--mat-stepper-header-height) - 24px) / 2) 6px !important;
+}

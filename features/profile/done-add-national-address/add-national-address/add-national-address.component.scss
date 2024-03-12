@@ -1,0 +1,30 @@
+@import '../../../evaluators-portal/evaluators-portal-request/evaluators-request-information/evaluators-request-information.component.scss';
+@import '../../../evaluators-portal/evaluators-portal-request/done-add-qualification/done-add-qualification.component.scss';
+@import '../../../../../assets/scss/matirial.scss';
+
+.container{
+    padding: 25px;
+}
+
+.mat-mdc-form-field{
+    margin-top: 0;
+}
+.add_qualification_container{
+    margin-bottom: 35px;
+    box-shadow: 0 2px 0px 0 #ddd;
+}
+.save_btn{
+    justify-content: end !important;
+}
+::ng-deep.cdk-overlay-pane{
+    width: 60% !important;
+    height: 85% !important;
+  }
+::ng-deep.cdk-global-overlay-wrapper{
+    overflow: auto !important;
+  }
+
+ mat-card {
+    padding: 0;
+    box-shadow: none;
+  }

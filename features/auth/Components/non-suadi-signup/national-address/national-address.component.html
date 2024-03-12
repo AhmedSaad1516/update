@@ -1,0 +1,90 @@
+<!-- <mat-divider></mat-divider> -->
+
+<mat-card>
+  <mat-card-content>
+    <div class="text-center">
+      <span>
+        <img src="assets/img/logo-taqeem.svg" class="img-style" />
+      </span>
+      <h2 class="custom-text-head">{{ "signup.stepTwoLabel" | translate }}</h2>
+    </div>
+    <form [formGroup]="form">
+      <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutAlign="space-between stretch"
+      >
+        <div fxFlex="99">
+          <app-shared-map></app-shared-map>
+          <div
+            fxLayout="row"
+            fxLayout.xs="column"
+            fxLayoutAlign="space-between stretch"
+            class="my-3"
+
+          >
+            <div
+              fxLayout="column"
+              fxLayout.xs="column"
+              fxFlex="50%"
+              fxFlex.gt-sm="100%"
+            >
+       
+              <div><p class="mt-3">{{'nationalAddress.City' | translate}} : --</p></div>
+              <div><p class="mt-3">{{'nationalAddress.Street' | translate}} : --</p></div>
+              <div><p class="mt-3">{{'nationalAddress.Additionalnumber' | translate}} : --</p></div>
+              <div><p class="mt-3">{{'nationalAddress.ResidencePlacAddress' | translate}} : --</p></div>
+            </div>
+            <div
+              fxLayout="column"
+              fxLayout.xs="column"
+              fxFlex="50%"
+              fxFlex.gt-sm="100%"
+            >
+              <div><p class="mt-3">{{'nationalAddress.District' | translate}} : --</p></div>
+              <div><p class="mt-3">{{'nationalAddress.Buildingnumber' | translate}} : --</p></div>
+              <div><p class="mt-3">{{'nationalAddress.PostalCode' | translate}} : --</p></div>
+            </div>
+          </div>
+          <app-upload-file-drag [label]="'signup.ProofOfResidencePlace'|translate"/>
+        </div>
+      </div>
+    </form>
+    <div
+      style="
+        flex-direction: row;
+        box-sizing: border-box;
+        display: flex;
+        place-content: center space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      "
+      class="mt-4"
+    >
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <span class="margin-inline-end-20">
+          <app-shared-button
+            [label]="'nationalAddress.SubmitApplication' | translate"
+            (buttonClick)="submit()"
+            [id]="'submitBtn'"
+          >
+          </app-shared-button>
+        </span>
+
+        <span>
+          <cancel-button
+            [label]="'nationalAddress.Skip' | translate"
+            (buttonClick)="openSuccessAlert()"
+          >
+            <!-- (buttonClick)="gotologin()" -->
+          </cancel-button>
+        </span>
+      </div>
+      <!-- <div>
+    <a class="a-text-underline-bold" (click)="back()">
+      {{ "signup.Back" | translate }}</a
+    >
+  </div> -->
+    </div>
+  </mat-card-content></mat-card
+>

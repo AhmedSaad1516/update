@@ -1,0 +1,12 @@
+<mat-label>
+  {{label}}
+  <mat-icon color="warn" class="required-icon" *ngIf="isRequired()">*</mat-icon>
+  <mat-icon color="primary" class="question-icon" *ngIf="hint" matTooltipPosition="above" [matTooltip]="hint">{{ 'shared.question' | translate }}</mat-icon>
+</mat-label>
+<mat-form-field class="d-flex pt-3" appearance="outline">
+    <textarea matInput [placeholder]="placeholder" class="example-input" [rows]="rows" [formControl]="controlF" [errorStateMatcher]="matcher"></textarea>
+    <!-- <mat-hint>{{hint}}</mat-hint> -->
+    @if (controlF.hasError('required')) {
+      <mat-error>{{label}} <strong>{{ 'valdation.required' | translate }}</strong></mat-error>
+    }
+</mat-form-field>

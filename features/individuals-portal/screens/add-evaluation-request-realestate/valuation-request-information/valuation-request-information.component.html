@@ -1,0 +1,79 @@
+<form
+[formGroup]="infoEvaluationForm"
+novalidate
+>
+<!-- (ngSubmit)="$event.preventDefault(); fullForm()" -->
+  <!-- <h3 class="fw-bold pb-4 pt-3">{{ 'valuationRequestInformation.title' | translate }}</h3> -->
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between stretch" class="pt-3">
+    <div fxFlex="100">
+      <input-field
+      [label]="'valuationRequestInformation.valuationRequestTitle' | translate"
+      [placeholder]="'valuationRequestInformation.valuationRequestTitleDescription' | translate"
+      [hint]="'valuationRequestInformation.valuationRequestTitleHint' | translate"
+      [controlF]="getFormGroup('valuationTitle')"
+      [dataTestId]="'valuationTitle'"
+      [error]="requestValidation.VALUATION_TITLE_VALIDATION_MESSAGE"/>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between stretch" class="pt-1" >
+    <div fxFlex="100">
+      <app-shared-ckeditor
+      [label]="'valuationRequestInformation.valuationRequestDescription' | translate"
+      [controlF]="getFormGroup('description')"
+      [error]="requestValidation.DESCRIPTION_MESSAGE"
+      [placehoder]="'valuationRequestInformation.valuationRequestDescriptionDescription' | translate"
+      [dataTestId]="'description'">
+      </app-shared-ckeditor>
+      <!-- <app-shared-quill [placehoder]="'type your content here'">
+      </app-shared-quill> -->
+    </div>
+  </div>
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between stretch" class="pt-4" *ngIf="purposeValuationList | async as purposeValuationListData" >
+    <div fxFlex="100">
+      <radio-button
+      [label]="'valuationRequestInformation.purposeValuation' | translate"
+      [hint]="'valuationRequestInformation.purposeValuationHint' | translate"
+      [radios]="purposeValuationListData"
+      [error]="requestValidation.PURPOSE_VALUATION_Id_VALIDATION_MESSAGE"
+      [controlF]="getFormGroup('purposeValuationId')"
+      [dataTestId]="'purposeValuationId'"/>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between stretch" class="pt-4 pb-4" >
+    <div fxFlex="49">
+      <app-date-picker
+        [label]="'valuationRequestInformation.cancellationDurationValuationRequest' | translate"
+        [placeholder]="'valuationRequestInformation.cancellationDurationValuationRequestDescription' | translate"
+        [hint]="'valuationRequestInformation.cancellationDurationValuationRequestHint' | translate"
+        [type]="'date'"
+        [error]="requestValidation.CANCELlATION_DURATION_VALUEATION_DATE"
+        [controlF]="getFormGroup('cancellationDurationValuationDate')"
+        [dateType]="'en'"
+        [dataTestId]="'cancellationDurationValuationDate'"
+      />
+    </div>
+    <div fxFlex="49" fxLayoutAlign="space-between center">
+      <checkbox
+      [label]="'valuationRequestInformation.RequestSingleAssetValuation' | translate"
+      [controlF]="getFormGroup('isOneAsset')"
+      [dataTestId]="'isOneAsset'"/>
+    </div>
+  </div>
+  <div fxLayout="row wrap"  fxLayout.xs="column wrap" fxLayoutAlign="end end" fxLayoutAlign.xs="center center" fxLayoutGap="10">
+    <cancel-button
+      fxFlex.lg="11"
+      fxFlex.md="20"
+      [label]="'shared.cancel' | translate"
+      (buttonClick)="goToHome()"
+      [dataTestId]="'cancel'">
+    </cancel-button>
+    <app-shared-button
+      fxFlex.lg="11"
+      fxFlex.md="20"
+      [label]="'shared.continue' | translate"
+      [isDisabled]="infoEvaluationForm.invalid"
+      (buttonClick)="fullForm()"
+      [dataTestId]="'continue'">
+    </app-shared-button>
+  </div>
+</form>

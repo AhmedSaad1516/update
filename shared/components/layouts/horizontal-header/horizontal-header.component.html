@@ -1,0 +1,57 @@
+<div [class]="containerFluid" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start start">
+  <mat-toolbar fxFlex="100" class="bg-white mt-2 mb-2">
+    
+    <span>
+      <button
+        fxHide="false" 
+        fxHide.gt-sm
+        mat-icon-button
+        [mat-menu-trigger-for]="menu">
+        <mat-icon class="text-light">menu</mat-icon>
+      </button>
+      <img src="assets/img/logo-taqeem.svg" class="img-style" />
+    </span>
+
+    <span class="fill-remaining-space px-5 m-1" fxShow ="false" fxShow.gt-sm>
+      
+        <!-- <input-field [placeholder]="'shared.search' | translate"  prefix="search"/> -->
+        <div class="row" >
+          <div class="col-1">
+          </div>
+          <div class="col-7">
+            <input-field [placeholder]="'shared.search' | translate"  prefix="search"/>
+          </div>
+          <div class="col-4">
+          </div>
+        </div>
+        <!-- <mat-grid-list cols="4" rowHeight="100px">
+          <mat-grid-tile colspan="3"><input-field [placeholder]="'shared.search' | translate"  prefix="search"/></mat-grid-tile> -->
+          <!-- <mat-grid-tile>2</mat-grid-tile>
+          <mat-grid-tile>3</mat-grid-tile> -->
+          <!-- <mat-grid-tile>4</mat-grid-tile>
+        </mat-grid-list> -->
+
+    </span>
+  
+  <button mat-icon-button  aria-label="Example icon-button with heart icon" >
+    <mat-icon class="text-light">chat_bubble_outline</mat-icon>
+  </button>
+  <button mat-icon-button aria-label="Example icon-button with share icon">
+    <mat-icon class="text-light">notifications_none</mat-icon>
+  </button>
+  <button mat-icon-button  aria-label="Example icon-button with heart icon" (click)="changeLang()">
+    <mat-icon class="text-light">public</mat-icon>
+  </button>
+  <span class="d-inline-flex px-lg-2 px-md-2" [matMenuTriggerFor]="menu">
+    <img src="assets/img/Avatar.png" class="rounded-circle" width="55" alt="Avatar" />
+    <h6 class="align-self-center px-lg-1 px-md-1" fxShow ="false" fxShow.gt-sm>{{ 'horizontalHeader.userName' | translate }}</h6>
+    <mat-icon class="align-self-center text-light">keyboard_arrow_down</mat-icon>
+  </span>
+  </mat-toolbar>
+  <mat-menu x-position="before" #menu="matMenu">
+    <button mat-menu-item routerLink="/products" (click)="goToProfile()"><h5 class="fw-bold">{{ 'addEvaluationRequestRealestate.profile' | translate }}</h5></button>
+    <button mat-menu-item (click)="goToEvaluatorsRequest()"><h5 class="fw-bold">{{ 'addEvaluationRequestRealestate.registerInTheEvaluatorsPortal' | translate }}</h5></button>
+    <button mat-menu-item routerLink="/products"><h5 class="fw-bold">{{ 'addEvaluationRequestRealestate.registerInThePartnerPortal' | translate }}</h5></button>
+    <button mat-menu-item routerLink="/products"><h5 class="fw-bold logout">{{ 'addEvaluationRequestRealestate.logOut' | translate }}</h5></button>
+  </mat-menu>
+</div>

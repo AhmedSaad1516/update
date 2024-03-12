@@ -1,0 +1,15 @@
+@import '../../../../../../assets/scss/matirial.scss';
+@import '../../evaluators-request-information/evaluators-request-information.component.scss';
+@import '../done-add-qualification.component.scss';
+
+.container{
+    padding: 25px;
+}
+
+::ng-deep.cdk-overlay-pane{
+    width: 60% !important;
+    height: 85% !important;
+  }
+::ng-deep.cdk-global-overlay-wrapper{
+    overflow: auto !important;
+  }

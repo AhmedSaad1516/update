@@ -1,0 +1,131 @@
+.select-type {
+  margin-top: 111px;
+  h3 {
+    color: #1a4681;
+    text-align: center;
+    font-weight: bold;
+    font-size: 56px;
+    line-height: 62px;
+    text-align: center;
+    margin-top: 12rem;
+    margin-bottom: 10.625rem;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    list-style-type: none;
+    gap: 36px;
+    padding: 0;
+    margin: 0;
+    .item {
+      background-color: white;
+      // padding-block: 60px 24px;
+      // padding-inline: 24px 30px;
+      border-radius: 4px;
+      background: #fff;
+
+      box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+      figure {
+        display: flex;
+        justify-content: center;
+        padding: 80px 58px;
+        background-color: #f2f7ff;
+        margin-bottom: 0;
+      }
+      .item-text {
+        padding: 24px;
+        h4 {
+          color: #1a4681;
+          font-size: 24px;
+          font-weight: 700;
+          line-height: 40px;
+        }
+        p {
+          font-weight: 300;
+          line-height: 24px; /* 150% */
+          color: #828083;
+        }
+        a {
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 48px; /* 300% */
+          color: #0fa69c;
+          span{
+            margin-inline-end: 10px;
+
+          }
+        }
+      }
+    }
+  }
+  .note {
+    font-weight: 300;
+    color: #828083;
+    line-height: 20px;
+    margin-top: 12px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .select-type {
+    h3 {
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      list-style-type: none;
+      gap: 36px;
+    }
+  }
+}
+@media only screen and (min-width: 560px) and (max-width: 767px) {
+  .select-type {
+    h3 {
+      font-size: 48px;
+    }
+    .cards {
+      grid-template-columns: 1fr;
+      list-style-type: none;
+      gap: 36px;
+      .item {
+        figure {
+          display: none !important;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 560px) {
+  .select-type {
+    h3 {
+      font-size: 34px;
+    }
+    .cards {
+      grid-template-columns: 1fr;
+      list-style-type: none;
+      gap: 20px;
+      .item {
+        // padding-block: 40px 20px;
+        // padding-inline: 8px 8px;
+        border-radius: 4px;
+        background: #fff;
+
+        box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+        figure {
+          display: none !important;
+        }
+        h4 {
+          color: #1a4681;
+          font-size: 20px;
+          font-weight: 600;
+          line-height: 30px;
+        }
+        p {
+          font-weight: 300;
+          line-height: 24px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

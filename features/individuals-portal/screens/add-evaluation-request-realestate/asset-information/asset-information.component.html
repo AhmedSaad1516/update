@@ -1,0 +1,48 @@
+<alert  *ngIf="requestValidation.isMultiRealestate" [message]="messageError" [type]="typeError"/>
+<div class="pt5 pb-5 mt-5" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" *ngIf="!isOneRealEstate">
+  <div class="px-2 fw-bold" fxFlex="40">
+      <h3 class="fw-bold" >{{ 'assetInformation.title' | translate }}</h3>
+  </div>
+  <div fxFlex="45"></div>
+  <div fxFlex="15">
+      <button mat-button color="primary" class="fw-bold" [attr.data-testid]="'addAsset'"  (click)="openDialog()">{{ 'assetInformation.addAsset' | translate }}</button>
+  </div>
+</div>
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch" *ngIf="!isOneRealEstate">
+  <div fxFlex="100">
+      <data-table [dataSourceTable]="dataSourceAssetInformation" [displayedColumns]="displayedColumns" [isFilter]="isFilter" />
+  </div>
+</div>
+<!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch" *ngIf="!isOneRealEstate">
+  <div fxFlex="100">
+    <app-test-table />
+  </div>
+</div> -->
+
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch" *ngIf="isOneRealEstate" >
+  <div fxFlex="100">
+      <app-data-retrieval-ministry-justice [isOneRealEstate]="isOneRealEstate" (isShowAddManual)="updateChildInput($event)" (isShowJusticeReturnData)="updateChildJusticeReturnData($event)"/>
+  </div>
+</div>
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch" class="pt-5" *ngIf="isOneRealEstate && isShowAddManual">
+  <div fxFlex="100">
+      <app-add-manual #childComponentRef [isOneRealEstate]="isOneRealEstate"  [isShowJusticeReturnData]="isShowJusticeReturnData" [requestValidation]="requestValidation"/>
+  </div>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="space-evenly stretch" class="pb-2 pt-4">
+  <cancel-button
+    fxFlex="50"
+    [label]="'shared.back' | translate"
+    (buttonClick)="goToBack()"
+    [dataTestId]="'back'">
+  </cancel-button>
+  <cancel-button 
+    fxLayoutAlign="end"
+    fxFlex="50"
+    [label]="'shared.continue' | translate"
+    color="primary"
+    (buttonClick)="submitForm()"
+    [dataTestId]="'continue'">
+  </cancel-button>
+</div>

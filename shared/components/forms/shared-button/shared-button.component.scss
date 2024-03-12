@@ -1,0 +1,17 @@
+button {
+  width: 100%;
+  border-radius: 8px;
+  height: 56px;
+  font-weight: 700;
+  line-height: 32px; /* 200% */
+}
+.btn-nfaz {
+  background: #f8f9f9!important;
+  color: #0fa69c !important;
+}
+.mdc-button{
+    font-weight: 700 !important;
+}
+.mat-accent{
+  --mdc-circular-progress-active-indicator-color: white !important;
+}

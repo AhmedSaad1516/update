@@ -1,0 +1,27 @@
+
+<mat-card>
+  <mat-card-content>
+    <div class="text-center">
+      <h2 class="custom-text-head">{{'signup.Register' | translate}}</h2>
+      <p class="p-text-center mb-0">
+        {{'signup.recoverDataHeaderParagraph' | translate}}
+    </div>
+<!-- [linear]="isLinear" -->
+    <mat-stepper  #stepper   [orientation]="(stepperOrientation | async)!" labelPosition="bottom">
+      <mat-step [stepControl]="firstFormGroup" [label]="'signup.stepOneLabel'| translate">
+        <app-personal-info (callParrentToGoToNextStep)="callParrentToGoToNextStep($event)"
+        (callParrentToGoToPrevStep)="callParrentToGoToPrevStep($event)"/>
+
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup" [label]="'signup.stepTwoLabel'| translate">
+        <app-national-address  
+        (callParrentToGoToNextStep)="callParrentToGoToNextStep($event)"
+        (callParrentToGoToPrevStep)="callParrentToGoToPrevStep($event)"
+        />
+
+      </mat-step>
+    </mat-stepper>
+    
+    
+    </mat-card-content
+></mat-card>

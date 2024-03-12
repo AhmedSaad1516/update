@@ -1,0 +1,5 @@
+<mat-checkbox color="primary" [formControl]="controlF"  (change)="handleCheck()">
+  {{label}}
+  <mat-icon color="primary" class="question-icon" *ngIf="hint" matTooltipPosition="above" [matTooltip]="hint">{{
+    'shared.question' | translate }}</mat-icon>
+</mat-checkbox>

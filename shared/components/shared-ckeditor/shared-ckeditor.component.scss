@@ -1,0 +1,7 @@
+:host ::ng-deep .ck-powered-by, :host ::ng-deep .ck-powered-by-balloon, :host ::ng-deep .ck-powered-by-balloon:hover{
+    display: none !important;
+}
+
+:host ::ng-deep .ck-editor__editable_inline {
+    min-height: 200px !important;
+}

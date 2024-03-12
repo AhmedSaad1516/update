@@ -1,0 +1,31 @@
+<mat-label>
+  {{ label }}
+  <mat-icon color="warn" class="required-icon" *ngIf="isRequiredValidator">*</mat-icon>
+  <mat-icon
+    color="primary"
+    class="question-icon"
+    *ngIf="hint"
+    matTooltipPosition="above"
+    [matTooltip]="hint"
+    >{{ 'shared.question' | translate }}</mat-icon
+  >
+</mat-label>
+<mat-form-field appearance="outline" class="d-flex pt-3">
+  <mat-select
+    [placeholder]="placeholder"
+    [formControl]="controlF"
+    [errorStateMatcher]="matcher"
+    hideSingleSelectionIndicator="true"
+    (valueChange)="handleSelected()">
+    <mat-option *ngFor="let option of options" [value]="option.id"
+      >{{ lang === 'ar'? option.nameAr : option.nameEn }}
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="controlF.hasError('required')">
+    {{ label }} <strong>{{ 'valdation.required' | translate }}</strong>
+  </mat-error>
+</mat-form-field>
+
+<mat-error *ngIf="error" style="margin-top: -18px; font-size: 12px">
+  <strong>{{ error | translate }}</strong>
+</mat-error>

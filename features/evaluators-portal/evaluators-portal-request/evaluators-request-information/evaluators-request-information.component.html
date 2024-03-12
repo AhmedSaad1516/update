@@ -1,0 +1,342 @@
+<div>
+  @if(loader==true){
+  <div  class="loader-overlay">
+    <div class="loader-content">
+      <p>
+        {{ 'evaluators.recoveringNationalAddressData' | translate }}
+      </p>
+    </div>
+  </div>
+  <div style="height: 400px;"></div>
+}
+@else{
+  <div>
+  <div *ngIf="responseSuccess==false" class="alert-box error">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C17.523 2 22 6.478 22 12C22 17.522 17.523 22 12 22C6.477 22 2 17.522 2 12C2 6.478 6.477 2 12 2ZM12 3.667C7.405 3.667 3.667 7.405 3.667 12C3.667 16.595 7.405 20.333 12 20.333C16.595 20.333 20.333 16.595 20.333 12C20.333 7.405 16.595 3.667 12 3.667ZM11.9987 14.5022C12.5502 14.5022 12.9973 14.9494 12.9973 15.5009C12.9973 16.0524 12.5502 16.4996 11.9987 16.4996C11.4471 16.4996 11 16.0524 11 15.5009C11 14.9494 11.4471 14.5022 11.9987 14.5022ZM11.9945 7C12.3742 6.9997 12.6882 7.2816 12.7381 7.64764L12.7451 7.7494L12.7487 12.251C12.749 12.6652 12.4135 13.0013 11.9993 13.0016C11.6196 13.0019 11.3055 12.72 11.2556 12.354L11.2487 12.2522L11.2451 7.7506C11.2447 7.33639 11.5802 7.00033 11.9945 7Z" fill="#D31212"/>
+      </svg>          
+    <span>
+      {{ 'evaluators.recoveringNationalAddressDataFaild' | translate }}
+      <span class="retry_btn">
+       <b (click)="getAllData()">  {{ 'evaluators.tryAgain' | translate }}</b>
+      </span>
+      <span>
+        <span>
+          {{ 'evaluators.or' | translate }}
+          </span>    
+      </span>
+      <span (click)="addManually()">
+     <b> {{ 'evaluators.addManually' | translate }}</b>
+      </span>
+  </span>
+  </div>
+  <!-- <div *ngIf="responseSuccess==false" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between stretch" class="pt-3">
+    <div fxFlex="100">
+      <radio-button
+      [label]="'evaluators.areYouSaudi' | translate"
+      [radios]="radios"
+      [hint]="'evaluators.areYouSaudi' | translate"
+      (radioChange)="changeRadio()"
+      [controlF]="getFormGroup('isDynamic')"/>
+    </div>
+  </div> -->
+  <form
+  [formGroup]="infoEvaluationForm"
+  novalidate
+  *ngIf="responseSuccess==true"
+  >
+  
+  <div class="reuest_title">
+    <img src="../../../../../assets/img/national_add.png" alt="">
+    <h3 class="fw-bold pb-5 pt-4">{{ 'evaluators.nationalAddressData' | translate }}</h3>
+  </div>
+  <h2 class="custom-text-head-20">
+   {{ 'evaluators.addressOwnerData' | translate }}
+  </h2>
+  
+  <div
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutAlign="space-between stretch"
+  >
+    <div fxFlex="24" fxLayoutGap="20px">
+      <input-field
+        [id]="'FirstNameAr'"
+        [label]="('signup.FirstName' | translate) + ''"
+        [placeholder]="'personalInfo.EnterYourName' | translate"
+        [controlF]="getFormGroup('FirstNameAr')"
+      />
+    </div>
+    <div fxFlex="24">
+      <input-field
+        [id]="'SecondNameAr'"
+        [label]="('signup.SecondName' | translate) + ''"
+        [placeholder]="'personalInfo.EnterYourName' | translate"
+        [controlF]="getFormGroup('SecondNameAr')"
+      />
+    </div>
+    <div fxFlex="24">
+      <input-field
+        [id]="'GrandfatherNameAr'"
+        [label]="('signup.GrandfatherName' | translate) + ''"
+        [placeholder]="'personalInfo.EnterYourName' | translate"
+        [controlF]="getFormGroup('GrandfatherNameAr')"
+      />
+    </div>
+    <div fxFlex="24">
+      <input-field
+        [id]="'LastNameAr'"
+        [label]="('signup.LastName' | translate) + ''"
+        [placeholder]="'personalInfo.EnterYourName' | translate"
+        [controlF]="getFormGroup('LastNameAr')"
+      />
+    </div>
+  </div>
+  <div
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutAlign="space-between stretch"
+  >
+      <span  fxFlex="12" class="id_num_text">
+   {{ 'evaluators.ID Number' | translate }}
+      </span>
+      <div
+        class="nationalNumInputs"
+        [dir]="'ltr'" 
+        fxFlex="88"
+    >
+      <code-input
+        [codeLength]="10"
+        (codeChanged)="onCodeChanged($event)"
+        (codeCompleted)="onCodeCompleted($event)"
+        [isCodeHidden]="false"
+        [disabled]="responseSuccess==true"
+        [code]="infoEvaluationForm.get('nationalNumInputs')?.value"
+      >
+      </code-input>
+    </div>
+  </div>
+  <h2 class="custom-text-head-20">
+   {{ 'evaluators.addressDetails' | translate }}
+  </h2>
+  <div
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutAlign="space-between stretch"
+  >
+      <span fxFlex="14" class="id_num_text">
+   {{ 'evaluators.shortAddress' | translate }}
+      </span>
+      <div
+      [dir]="'ltr'"
+      class="shortAddressInputs"
+      fxFlex="86"
+    >
+      <code-input
+        [codeLength]="8"
+        (codeChanged)="onCodeChanged($event)"
+        (codeCompleted)="onCodeCompleted($event)"
+        [isCodeHidden]="false"
+        [disabled]="responseSuccess==true"
+        [isCharsCode]="true"
+        [code]="infoEvaluationForm.get('shortAddress')?.value"
+        >
+      </code-input>
+    </div>
+  </div>
+  <div
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutAlign="space-between stretch"
+    class="bNumDiv"
+  >
+  <div   fxFlex="49">
+    <div>
+      <span> 
+   {{ 'shared.buildingNumber' | translate }}
+      </span>
+     </div>
+      <div
+      [dir]="'ltr'" 
+      class="buildNumInputs"
+    >
+      <code-input
+        [codeLength]="4"
+        (codeChanged)="onCodeChanged($event)"
+        (codeCompleted)="onCodeCompleted($event)"
+        [isCodeHidden]="false"
+        [disabled]="responseSuccess==true"
+        [code]="infoEvaluationForm.get('buildingNumber')?.value"
+      >
+      </code-input>
+    </div>
+  </div>
+  <div fxFlex="50">
+    <div>
+     </div>
+     <input-field
+     [id]="'SecondNameAr'"
+     [label]="('nationalAddress.Street' | translate) + ''"
+     [placeholder]="'nationalAddress.EnterStreet' | translate"
+     [controlF]="infoEvaluationForm.get('street')"
+   />
+  </div>
+  </div>
+  
+  <div
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutAlign="space-between stretch"
+  >
+  <div class="element_center">
+    <div>
+      <span>
+   {{ 'evaluators.Sub-number' | translate }}
+      </span>
+     </div>
+      <div
+      [dir]="'ltr'"
+      class="buildNumInputs"
+    >
+      <code-input
+        [codeLength]="4"
+        (codeChanged)="onCodeChanged($event)"
+        (codeCompleted)="onCodeCompleted($event)"
+        [isCodeHidden]="false"
+        [disabled]="responseSuccess==true"
+        [code]="infoEvaluationForm.get('subNumber')?.value"
+      >
+      </code-input>
+    </div>
+  </div>
+  <div class="element_center">
+    <div>
+     </div>
+     <input-field
+     [id]="'SecondNameAr'"
+     [label]="('shared.district' | translate) + ''"
+     [placeholder]="'shared.district' | translate"
+     [controlF]="infoEvaluationForm.get('district')"
+   />
+  </div>
+  </div>
+  
+  <div
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutAlign="space-between stretch"
+  >
+  <div class="element_center">
+    <div>
+      <span>  
+   {{ 'nationalAddress.PostalCode' | translate }}
+        </span>
+     </div>
+      <div
+      [dir]="'ltr'"
+      class="postalCodeInputs"
+    >
+      <code-input
+        [codeLength]="5"
+        (codeChanged)="onCodeChanged($event)"
+        (codeCompleted)="onCodeCompleted($event)"
+        [isCodeHidden]="false"
+        [disabled]="responseSuccess==true"
+        [code]="infoEvaluationForm.get('postalCode')?.value"
+      >
+      </code-input>
+    </div>
+  </div>
+  <div class="element_center">
+  
+  <div fxFlex="100">
+    <input-field
+     [id]="'SecondNameAr'"
+     [label]="('nationalAddress.City' | translate) + ''"
+     [placeholder]="'nationalAddress.City' | translate"
+     [controlF]="infoEvaluationForm.get('city')"
+   />
+  </div>
+  </div>
+  </div>
+  
+  
+  <div
+  fxLayout.xs="column">
+  <div>
+  
+  <div fxFlex="100">
+    <input-field
+    [id]="'SecondNameAr'"
+    [label]="('shared.country' | translate) + ''"
+    [placeholder]="'shared.country' | translate"
+    [controlF]="infoEvaluationForm.get('country')"
+    />
+  </div>
+  </div>
+  </div>
+  
+  
+    <div fxLayout="row"  fxLayout.xs="column" fxLayoutAlign="end end" fxLayoutGap="1" class="pt-4">
+      <cancel-button
+        fxFlex="80"
+        [label]="'shared.cancel' | translate"
+        (buttonClick)="goToHome()">
+      </cancel-button>
+      <!-- <cancel-button
+      fxFlex="30" class="manual_data_btn"
+      [label]="'evaluators.Manual data entry' | translate"
+      (buttonClick)="fullForm()">
+    </cancel-button> -->
+        <app-shared-button
+        fxFlex="20"
+        [label]="'personalInfo.Saveandcontinue' | translate"
+        (buttonClick)="fullForm()">
+      </app-shared-button>
+      <!-- [isDisabled]="infoEvaluationForm.invalid" -->
+    </div>
+  </form>
+  
+  <form *ngIf="responseSuccess==false">
+    <div
+      fxLayout="row"
+      fxLayout.xs="column"
+      fxLayoutAlign="space-between stretch"
+    >
+      <div fxFlex="99">
+        <div fxLayout="row" fxLayout.xs="column" class="pt-1" >
+          <div fxFlex="100">
+            <app-shared-map (getLocationEvent)="getLocation($event)"
+            [label]="'assetInformation.assetLocation' | translate"
+            [error]="requestValidation.OWNERSHIP_NUMBER_VALIDATION_MESSAGE"
+            [dataTestId]="'assetLocation'"
+           ></app-shared-map>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column">
+          <div fxFlex="100">
+            <view-map [googleMapAddress]="googleMapAddress"/>
+          </div>
+        </div>
+        <app-upload-file-drag [label]="'signup.ProofOfResidencePlace'|translate"/>
+      </div>
+    </div>
+  
+    <div fxLayout="row"  fxLayout.xs="column" fxLayoutAlign="end end" fxLayoutGap="1" class="pt-4">
+      <cancel-button
+        fxFlex="75"
+        [label]="'shared.cancel' | translate"
+        (buttonClick)="goToHome()">
+      </cancel-button>
+        <app-shared-button
+        fxFlex="20"
+        [label]="'personalInfo.Saveandcontinue' | translate"
+        (buttonClick)="fullForm()">
+      </app-shared-button>
+      <!-- [isDisabled]="infoEvaluationForm.invalid" -->
+    </div>
+  </form>
+  </div>
+}
+  
+</div>

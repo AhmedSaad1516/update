@@ -1,0 +1,23 @@
+<mat-label>
+  {{label}}
+    <mat-icon color="warn" class="required-icon" *ngIf="isRequired()">*</mat-icon>
+    <mat-icon color="primary" class="question-icon" *ngIf="hint" matTooltipPosition="above" [matTooltip]="hint">{{ 'shared.question' | translate }}</mat-icon>
+</mat-label>
+
+<mat-selection-list (click)="onSelectedOption(shoes.selectedOptions)" #shoes color="primary" class="pt-4">
+  <mat-divider></mat-divider>
+  @for (shoe of typesOfShoes; track shoe) {
+    <mat-list-option [value]="shoe">
+      <span matListItemTitle><span>{{shoe.name}}</span> | <span class="text-center"> {{shoe.location}}</span></span>
+      <span matListItemLine>{{shoe.email}} | {{shoe.phone}}</span>
+    </mat-list-option>
+    <mat-divider></mat-divider>
+  }
+</mat-selection-list>
+<mat-error *ngIf="error" style=" font-size: 12px">
+  <strong>{{ error | translate }}</strong>
+</mat-error>
+
+<!-- <p>
+  Options selected: {{shoes.selectedOptions.selected}}
+</p> -->

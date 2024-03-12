@@ -1,0 +1,88 @@
+.home_tab{
+    color: #1A4681;
+    text-decoration: auto;
+}
+.profile-container{
+    padding: 20px;
+    color: #424143;
+    position: relative;
+    svg{
+        width: 20px;
+      }
+      p{
+        font-size: 14px;
+        display: inline-block;
+        margin: 8px;
+    }
+}
+.image-container {
+    display: flex;
+    align-items: center;
+    border-bottom: solid 1px #EDEFF0;
+    padding-bottom: 20px;
+    margin: 20px;
+    h4{
+        font-weight: bold;
+        color: #424143;
+        padding-right: 10px;
+    }
+  }
+.basic-info{
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 20px;
+}
+  .profile-image{
+    // border: solid 1px;
+    border-radius: 50%;
+    width: 85px;
+    height: 85px;
+  }
+  .defult_avatar{
+    margin: auto;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .contact-container{
+    margin: 0px 20px;
+  }
+  .edit_icon{
+    cursor: pointer;
+  }
+
+ ::ng-deep.mdc-checkbox{
+    padding-right: 0 !important;
+  }
+  .checkbox-container{
+    margin-top: 10px;
+  }
+  .info-div{
+    // margin-top: 20px;
+  }
+
+  .personal-info-title{
+    border-bottom: solid 1px #EDEFF0;
+    padding: 10px;
+  }
+  h6{
+    font-weight: bold;
+  }
+.add-cv{
+    cursor: pointer;
+    color: #0FA69C;
+}
+.cv-upload{
+    width: fit-content;
+    background-color: #F8F9F9;
+    border-radius: 8px;
+    margin: 15px 0;
+    padding: 0 5px;
+}
+.profie_status{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+}

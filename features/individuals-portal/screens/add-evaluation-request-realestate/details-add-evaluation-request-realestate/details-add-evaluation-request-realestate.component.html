@@ -1,0 +1,30 @@
+<side-nav>
+    <app-title-form [srcLink]="'assets/img/title.png'" [title]="'addEvaluationRequestRealestate.details' | translate">
+    <div header fxLayout="row" fxLayout.xs="column" fxLayoutAlign="end end" fxLayoutGap="10" class="align-self-center" *ngIf="!isCancel && actionRequest">
+      <div *ngFor="let key of objectKeys(actionRequest)">
+        <app-shared-button
+          *ngIf="actionRequest[key]"
+          class="d-grid"
+          [label]="'addEvaluationRequestRealestate.' + key | translate"
+          (buttonClick)="cancelRequest()">
+        </app-shared-button>
+      </div>
+    </div>
+    <mat-stepper  linear #stepper labelPosition="bottom" *ngIf="stepperData && !isCancel">
+      <mat-step
+      *ngFor="let oneStepper of stepperData.data"
+      [label]="oneStepper.stepDto.nameAr"
+      [completed]="oneStepper.stepStatus.code === 'Completed'? true : false"
+      [state]="oneStepper.stepStatus.code === 'Completed'? 'done' : oneStepper.stepStatus.code === 'Current'? 'edit' : ''"
+      >
+      </mat-step>
+    </mat-stepper>
+    <div *ngIf="isCancel" fxLayout="row" fxLayoutAlign="space-between start">
+      <h3 class="fw-bold pt-3 pb-3">حالة طلب التقييم</h3>
+      <span class="custom-badge custom-danger text-left align-self-center">ملغي</span>
+    </div>
+    </app-title-form>
+  <app-title-form>
+    <app-review-add-evaluation-request-realestate />
+  </app-title-form>
+</side-nav>

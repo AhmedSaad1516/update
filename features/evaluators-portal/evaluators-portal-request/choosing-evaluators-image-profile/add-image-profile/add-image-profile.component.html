@@ -1,0 +1,91 @@
+<div class="container">
+  <h2 class="img_prev_title">
+    {{'evaluators.setProfilePicture' | translate}}
+  </h2>
+  <div class="img_prev_container">
+    <div>
+      <img  class="logo_taqeem" src="../../../../../assets/img/logo-taqeem.svg" alt="">
+    </div>
+    <div (click)="fileInput.click()" class="image-upload-container" >
+      <!-- <input type="file" #fileInput hidden (change)="onFileSelected($event)" accept="image/*"> -->
+      <input
+      #fileInput
+      type="file"
+      accept="image/*"
+      (change)="onImageChange($event)"
+      hidden
+    />
+      <img (click)="fileInput.click()"  [src]="sanitizeImagePreview" *ngIf="sanitizeImagePreview">
+      <!-- <img (click)="fileInput.click()"  [src]="selectedImage" *ngIf="!sanitizeImagePreview"> -->
+      <span *ngIf="data">
+        <image-cropper
+        [imageFile]="data.file"
+        [autoCrop]="false"
+        [transform]="transform"
+      >
+    </image-cropper>
+      </span>
+      <div class="div1"></div>
+      <div class="div2"></div>
+      <div class="div3"></div>
+      </div>
+      <div class="img_info">
+    {{'evaluators.setProfilePictureInfo' | translate}}
+      </div>
+
+  </div>
+<div class="zoom-controls">
+  <svg (click)="onSliderChange()" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M7 12.5547H17M21 12.5547C21 17.5253 16.9706 21.5547 12 21.5547C7.02944 21.5547 3 17.5253 3 12.5547C3 7.58412 7.02944 3.55469 12 3.55469C16.9706 3.55469 21 7.58412 21 12.5547Z" stroke="#1A4681" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  <!-- <mat-slider min="1" max="5" step=".5"  >
+  <input matSliderThumb  [(ngModel)]="zoomValue">
+</mat-slider> -->
+<mat-slider
+class="example-margin"
+[disabled]="disabled"
+[max]="max"
+[min]="max * -1"
+[step]="step"
+[discrete]="thumbLabel"
+[showTickMarks]="showTicks">
+<input matSliderThumb [(ngModel)]="value" #slider (input)="onSliderChange()">
+</mat-slider>
+
+  <svg (click)="onSliderChange()" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 7.55469V17.5547M7 12.5547H17M21 12.5547C21 17.5253 16.9706 21.5547 12 21.5547C7.02944 21.5547 3 17.5253 3 12.5547C3 7.58412 7.02944 3.55469 12 3.55469C16.9706 3.55469 21 7.58412 21 12.5547Z" stroke="#1A4681" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg> 
+</div>
+
+<div class="img_prev_btns">
+   <span (click)="fileInput.click()">
+     {{'evaluators.changePhoto' | translate}}
+      
+   </span>
+   <svg width="1" height="17" viewBox="0 0 1 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0.5 0.554688V16.5547" stroke="#E0DFE0"/>
+    </svg>
+      <span (click)="deleteImage()">
+     {{'evaluators.deletePhoto' | translate}}
+      </span>        
+</div>
+
+<div>
+
+</div>
+<div  fxLayout="row"  fxLayout.xs="column" fxLayoutAlign="end end" fxLayoutGap="1" class="pt-4 save_btn">
+<cancel-button
+  fxFlex="15"
+  [label]="'shared.cancel' | translate"
+  (buttonClick)="closeDialog()">
+</cancel-button>
+<app-shared-button
+  fxFlex="10"
+  [label]="'shared.save' | translate"
+  (buttonClick)="onAccept()">
+</app-shared-button>
+<!-- <button   fxFlex="20"  mat-button class="dnet-button-wizard-next" (click)="onAccept()">
+  {{'shared.save' | translate}}
+</button> -->
+</div>
+</div>

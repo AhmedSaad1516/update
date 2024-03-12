@@ -1,0 +1,77 @@
+@if (label) {
+<mat-label class="form-label">
+  {{ label }}
+  <mat-icon color="warn" class="required-icon">*</mat-icon>
+</mat-label>
+}
+<div class="d-flex p-3">
+  <div class="d-flex p-3 flex-grow-1 border border-primary rounded">
+    <mat-icon> attach_file</mat-icon>
+    <input
+      class="w-100 border-0 input-file"
+      matInput
+      [(ngModel)]="myfilename"
+      name="myfilename"
+      [disabled]="true"
+    />
+
+    <!-- Hidden file input -->
+    <input
+      type="file"
+      #fileUpload
+      (change)="onFileSelected($event)"
+      name="fileUpload"
+      multiple="multiple"
+      accept="image/*"
+      style="display: none"
+    />
+    @if (showProgressBar) {
+    <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
+    }
+  </div>
+
+  <button class="btn btn-primary" (click)="fileUpload.click()">
+    {{ 'shared.selectFile' | translate }}
+  </button>
+</div>
+
+<!--  How to call  in another componenet
+
+    <app-upload-file [label]= "'label'" [showProgressBar]="showProgressBar" [progress]="progress"
+      (onFileSelectedEvent)="onFileSelected($event)">
+    </app-upload-file> -->
+
+<!--
+  showProgressBar = false;
+  fileToUpload: File | null = null;
+  progress = 0;
+ -->
+<!--
+  onFileSelected(event: File) {
+    this.fileToUpload = event;
+    this.upload(); // Automatically trigger the file upload
+  }
+
+  upload() {
+    if (!this.fileToUpload) {
+      return;
+    }
+
+    this.showProgressBar = true;
+
+    this.service.uploadPhoto(this.fileToUpload, 1).subscribe({
+      next: async (event) => {
+        if (event.type === HttpEventType.UploadProgress) {
+          this.progress = await Math.round((100 * event.loaded) / event.total!);
+        } else if (event instanceof HttpResponse) {
+          // File upload complete
+          this.showProgressBar = false;
+          // Handle response from the server
+        }
+      },
+      error: (error) => {
+        console.log('Error uploading file:', error);
+        this.showProgressBar = false;
+      },
+    });
+  } -->

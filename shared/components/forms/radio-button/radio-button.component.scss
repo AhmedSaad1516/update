@@ -1,0 +1,45 @@
+.mat-mdc-radio-button.mat-primary{
+  background-color: #fbfbfb !important;
+  border-color: #E0DFE0 !important;
+  border-width: 1px !important ;
+  border-radius: 8px !important;
+  border: 1px solid  #E0DFE0!important;
+  // padding: 10px 20px 10px 166px !important;
+  // margin-left: 10px !important;
+}
+
+mat-error, mat-hint{
+  font-size: 13px !important;
+  
+}
+
+mat-radio-button{
+  cursor: pointer !important;
+}
+.radio-card{
+  font-size: 20px !important;
+  font-weight: 700;
+}
+:host ::ng-deep .mdc-form-field {
+  font-size: 16px !important;
+}
+
+p{
+  font-weight: normal !important;
+}
+
+:host ::ng-deep .mat-mdc-radio-button.mat-primary .mdc-radio__inner-circle {
+  //background-color: #; /* Replace with your desired color */
+  border: none; /* Remove the inner circle border */
+}
+
+:host ::ng-deep .mat-mdc-radio-button.mat-primary .mdc-radio__inner-circle::after {
+  content: '\2713'; /* Unicode for checkmark character */
+  color: #1a4681; /* Replace with your desired color */
+  font-size: 32px; /* Adjust the font size as needed */
+  position: absolute;
+  font-weight: bolder;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

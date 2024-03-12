@@ -1,0 +1,19 @@
+.my-search-box {
+  align-self: center;
+  font-size: 16px;
+  font-weight: 400;
+  color: #212529;
+  width: 100%;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #E0DFE0;
+  border-radius: 4px;
+  height: 55px;
+  margin-bottom: 6px;
+  padding-right: 14px;
+}
+.my-search-box:focus-visible{
+  outline: none !important;
+  border-color: #E0DFE0;
+  box-shadow: 0 0 0px #E0DFE0;
+}

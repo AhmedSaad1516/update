@@ -1,0 +1,314 @@
+<!-- <mat-divider></mat-divider> -->
+
+<mat-card>
+  <mat-card-content>
+    <div class="text-center">
+      <span>
+        <img src="assets/img/logo-taqeem.svg" class="img-style" />
+      </span>
+      <h2 class="custom-text-head">{{ "signup.stepOneLabel" | translate }}</h2>
+      <p class="mb-0">
+        {{ "signup.recoverPersonalHeaderParagraph" | translate }}
+      </p>
+    </div>
+    <mat-divider></mat-divider>
+
+    <form [formGroup]="form">
+      <h2 class="custom-text-head-20">
+        {{ "signup.NameinArabic" | translate }}
+      </h2>
+
+      <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutAlign="space-between stretch"
+      >
+        <div fxFlex="49" fxLayoutGap="20px">
+          <input-field
+            [id]="'FirstNameAr'"
+            [label]="('signup.FirstName' | translate) + ''"
+            [placeholder]="'personalInfo.EnterYourName' | translate"
+            [controlF]="form.get('FirstNameAr')"
+          />
+        </div>
+        <div fxFlex="49">
+          <input-field
+            [id]="'SecondNameAr'"
+            [label]="('signup.SecondName' | translate) + ''"
+            [placeholder]="'personalInfo.EnterYourName' | translate"
+            [controlF]="form.get('SecondNameAr')"
+          />
+        </div>
+      </div>
+
+        <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutAlign="space-between stretch"
+      >
+        <div fxFlex="49">
+          <input-field
+            [id]="'GrandfatherNameAr'"
+            [label]="('signup.GrandfatherName' | translate) + ''"
+            [placeholder]="'personalInfo.EnterYourName' | translate"
+            [controlF]="form.get('GrandfatherNameAr')"
+          />
+        </div>
+        <div fxFlex="49">
+          <input-field
+            [id]="'FamilyNameAr'"
+            [label]="('signup.FamilyName' | translate) + ''"
+            [placeholder]="'personalInfo.EnterYourName' | translate"
+            [controlF]="form.get('FamilyNameAr')"
+          />
+        </div>
+      </div>
+      <h2 class="custom-text-head-20">
+        {{ "signup.NameinEnglish" | translate }}
+      </h2>
+
+      <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutAlign="space-between stretch"
+      >
+        <div fxFlex="49" fxLayoutGap="20px">
+          <input-field
+            [id]="'FirstNameEn'"
+            [label]="('signup.FirstName' | translate) + ''"
+            [placeholder]="'personalInfo.EnterYourName' | translate"
+            [controlF]="form.get('FirstNameEn')"
+          />
+        </div>
+        <div fxFlex="49">
+          <input-field
+            [id]="'SecondNameEn'"
+            [label]="('signup.SecondName' | translate) + ''"
+            [placeholder]="'personalInfo.EnterYourName' | translate"
+            [controlF]="form.get('SecondNameEn')"
+          />
+        </div>
+      </div>
+
+        <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutAlign="space-between stretch"
+      >
+        <div fxFlex="49">
+          <input-field
+            [id]="'GrandfatherNameEn'"
+            [label]="('signup.GrandfatherName' | translate) + ''"
+            [placeholder]="'personalInfo.EnterYourName' | translate"
+            [controlF]="form.get('GrandfatherNameEn')"
+          />
+        </div>
+        <div fxFlex="49">
+          <input-field
+            [id]="'FamilyNameEn'"
+            [label]="('signup.FamilyName' | translate) + ''"
+            [placeholder]="'personalInfo.EnterYourName' | translate"
+            [controlF]="form.get('FamilyNameEn')"
+          />
+        </div>
+      </div>
+      <!-- <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutAlign="space-between stretch"
+      >
+        <div fxFlex="49" fxLayoutGap="20px">
+          <input-field
+            [label]="('personalInfo.NameInEnglish' | translate) + ''"
+            [placeholder]="'personalInfo.EnterYourName' | translate"
+            [controlF]="form.get('nameEn')"
+            [id]="'nameEn'"
+
+          />
+        </div>
+        <div fxFlex="49">
+          <input-field
+            [label]="('personalInfo.NameInArabic' | translate) + ''"
+            [placeholder]="'personalInfo.EnterYourName' | translate"
+            [controlF]="form.get('nameAr')"
+            [id]="'nameAr'"
+
+          />
+        </div>
+      </div> -->
+      <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutAlign="space-between stretch"
+      >
+        <div fxFlex="49" fxLayoutGap="20px">
+          <app-auto-complete
+            [label]="('personalInfo.IDType' | translate) + ''"
+            [placeholder]="'personalInfo.SelectIDType' | translate"
+            [control]="form.get('IDType')"
+            [options]="options"
+            [id]="'IDType'"
+
+          />
+        </div>
+        <div fxFlex="49">
+          <input-field
+            [label]="('personalInfo.IDNumber' | translate) + ''"
+            [placeholder]="'personalInfo.EnterYourIDNumber' | translate"
+            [controlF]="form.get('IDNumber')"
+            [id]="'IDNumber'"
+
+          />
+        </div>
+      </div>
+      <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutAlign="space-between stretch"
+      >
+        <div fxFlex="49" fxLayoutGap="20px">
+          <app-auto-complete
+            [label]="('personalInfo.Nationality' | translate) + ''"
+            [placeholder]="'personalInfo.SelectYourNationality' | translate"
+            [control]="form.get('nationality')"
+            [options]="options"
+            [id]="'nationality'"
+
+          />
+        </div>
+        <div fxFlex="49">
+          <app-auto-complete
+            [label]="('personalInfo.Gender' | translate) + ''"
+            [placeholder]="'personalInfo.SelectYourGender' | translate"
+            [control]="form.get('gender')"
+            [options]="options"
+            [id]="'gender'"
+
+          />
+        </div>
+      </div>
+      <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutAlign="space-between stretch"
+      >
+        <!-- <div fxFlex="49" fxLayoutGap="20px">
+          <app-date-picker
+            [label]="('personalInfo.DateofbirthGregorian' | translate) + ''"
+            [placeholder]="
+              'personalInfo.SelecYourtDateofbirthGregorian' | translate
+            "
+            [type]="'date'"
+            [controlF]="form.get('DOPGregorian')"
+            [dateType]="'en'"
+          />
+        </div> -->
+        <div fxFlex="100">
+          <app-date-picker
+            [label]="('personalInfo.DateofbirthHijri' | translate) + ''"
+            [placeholder]="
+              ('personalInfo.SelecYourtDateofbirthHijri' | translate) + ''
+            "
+            [type]="'date'"
+            [controlF]="form.get('DOPHijri')"
+            [dateType]="form.get('IDNumber')?.value.toString()[0] ==1 ? 'ar-SA' : 'en'"
+            [id]="'DOPHijri'"
+
+          />
+        </div>
+      </div>
+      <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutAlign="space-between stretch"
+      >
+        <div fxFlex="49" fxLayoutGap="20px">
+          <input-field
+            [label]="('personalInfo.Email' | translate) + ''"
+            [placeholder]="'personalInfo.EnterYourEmail' | translate"
+            [controlF]="form.get('email')"
+            [id]="'email'"
+
+          />
+        </div>
+        <div fxFlex="49">
+          <app-input-group
+            [optionsLabel]="''"
+            [optionsPlaceholder]="'nationalAddress.Choose' | translate"
+            [options]="phoneCode"
+            [optionscontrolF]="form.get('countryKey')"
+            [inputLabel]="('personalInfo.MobileNumber' | translate) + ''"
+            [inputPlaceholder]="
+              'personalInfo.EnterYourMobileNumber' | translate
+            "
+            [controlF]="form.get('mobileNumber')"
+            [id]="'mobileNumber'"
+
+          />
+
+        </div>
+      </div>
+      <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutAlign="space-between stretch"
+      >
+        <div fxFlex="49" fxLayoutGap="20px">
+          <input-field
+            [label]="('personalInfo.Passward' | translate) + ''"
+            [placeholder]="'personalInfo.EnterYourPassward' | translate"
+            [controlF]="form.get('passward')"
+            [type]="'password'"
+            [hint]="'personalInfo.passwordHint' | translate"
+            [id]="'passward'"
+            [error]=" form.get('passward')?.hasError('minlength') ?  ('valdation.minLength' | translate : { minLength: 8 }) : ''"
+
+          />
+        </div>
+        <div fxFlex="49">
+          <input-field
+            [label]="('personalInfo.ConfirmPassward' | translate) + ''"
+            [placeholder]="'personalInfo.EnterYourConfirmPassward' | translate"
+            [controlF]="form.get('confirmPassward')"
+            [type]="'password'"
+            [id]="'confirmPassward'"
+            [error]="form.hasError('passwordMismatch')
+                ? ('errors.confirmPasswardError' | translate): ''"
+          />
+        </div>
+      </div>
+      <!-- <mat-error class="error_m" style="text-align: right;" *ngIf="form.get('confirmPassward')?.value !== form.get('passward')?.value">
+        {{ 'errors.confirmPasswardError' | translate}}
+      </mat-error> -->
+    </form>
+    <div
+      style="
+        flex-direction: row;
+        box-sizing: border-box;
+        display: flex;
+        place-content: center space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      "
+      class="mt-4"
+    >
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <span class="margin-inline-end-20">
+          <app-shared-button
+            [label]="'personalInfo.Saveandcontinue' | translate"
+            (buttonClick)="submit()"
+            [isDisabled]="!form.valid"
+            [id]="'submitBtn'"
+
+          >
+          </app-shared-button>
+        </span>
+
+        <!-- <span> -->
+        <cancel-button [label]="'personalInfo.Cancel' | translate">
+        </cancel-button>
+        <!-- </span> -->
+      </div>
+    </div>
+  </mat-card-content></mat-card
+>

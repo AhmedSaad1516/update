@@ -1,0 +1,25 @@
+<div class="pt-5" fxLayout="row" fxLayoutAlign="center center">
+    <mat-icon  mat-icon-button class="done-icon" color="primary">check_circle_outline</mat-icon>
+</div>
+
+<h2 mat-dialog-title class="text-center" >{{'addEvaluationRequestRealestate.newEvaluationRequestSent' | translate}}</h2>
+<h2 mat-dialog-title class="pb-2"> {{'addEvaluationRequestRealestate.numberRequest' | translate}} {{appNumber}}</h2>
+<mat-dialog-content>{{'addEvaluationRequestRealestate.RequestSentSuccessfully' | translate}}</mat-dialog-content>
+<mat-dialog-actions>
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20" class="pt-5">
+    <cancel-button
+      class="d-grid"
+      [label]="'shared.homePage' | translate"
+      (buttonClick)="goToHome()"
+      [dataTestId]="'homepage'"
+      mat-dialog-close>
+    </cancel-button>
+    <cancel-button
+      class="d-grid"
+      [label]="'addEvaluationRequestRealestate.followUpRequest' | translate"
+      (buttonClick)="goToDetails()"
+      color="primary"
+      [dataTestId]="'followup'">
+    </cancel-button>
+  </div>
+</mat-dialog-actions>

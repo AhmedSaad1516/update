@@ -1,0 +1,44 @@
+<h3 [class]="classTitle" *ngIf="!isOneRealEstate">{{ 'assetInformation.title' | translate  }}</h3>
+  <form
+  formGroup="returnData"
+  novalidate
+  (ngSubmit)="$event.preventDefault(); submitForm()">
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between stretch" [class]="isOneRealEstate? 'pt-3' : 'pt-0'">
+    <div fxFlex="100">
+      <input-field
+      [label]="'assetInformation.assetDeedNumber' | translate "
+      [type]="'number'"
+      [placeholder]="'assetInformation.assetDeedNumberDescription' | translate "
+      [controlF]="getFormGroup('assetDeedNumber')"
+      [dataTestId]="'assetDeedNumber'"/>
+    </div>
+  </div>
+  </form>
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center stretch" fxLayoutGap="15" class="pt-1 pb-4">
+    <!-- <div [fxFlex]="fxFlexBtn">
+    <cancel-button
+      class="d-grid"
+      [label]="'assetInformation.manualEntry' | translate "
+      mat-dialog-close
+      [color]="colorAddManual"
+      (buttonClick)="onNoClick(false)">
+    </cancel-button>
+    </div> -->
+    <!-- <button mat-fab aria-label="Example icon button with a delete icon" style="background-color: #E0DFE0 !important;">
+      <mat-icon style="height:30px !important; color: black !important">او</mat-icon>
+    </button> -->
+    <div [fxFlex]="fxFlexBtn">
+      <app-shared-button
+        class="d-grid"
+        [label]="'assetInformation.dataRetrievalMinistryJustice' | translate "
+        (buttonClick)="onNoClick(true)"
+        [showSpinner]="showSpinner"
+        [color]="colorReturnData"
+        [dataTestId]="'dataRetrievalMinistryJustice'">
+      </app-shared-button>
+    </div>
+  </div>
+  
+  <div class="alert alert-warning" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch" fxLayoutGap="15" *ngIf="isShow">
+    <strong class="show-manual">{{ 'assetInformation.notRetrunData1' | translate  }} {{ getFormGroup('assetDeedNumber')!.value }} {{ 'assetInformation.notRetrunData2' | translate  }}<a (click)="onNoClick(false)" [attr.data-testid]="'addManualAsset'">{{ 'assetInformation.manualEntry' | translate  }}</a></strong>
+  </div>

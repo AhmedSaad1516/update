@@ -1,0 +1,39 @@
+@import '../../../../assets/scss/matirial.scss';
+@import '../../evaluators-portal/evaluators-portal-request/evaluators-request-information/evaluators-request-information.component.scss';
+
+.view{
+    background-color: #1A4681 ;
+    color: #fff; 
+}
+
+.custom-text-head-20{
+    margin: 20px 0;
+}
+.add_qualification_container{
+    display: flex;
+    justify-content: space-between;
+}
+.view_btn{
+    margin-right: 25px; 
+    cursor: pointer;
+}
+.add_qualification{
+    color: #1A4681;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 20px 0;
+    font-size: 18px;
+}
+// ::ng-deep.cdk-overlay-pane{
+//     width: 60% !important;
+// }
+.details_img{
+    display: flex;
+    justify-content: space-around;
+    svg{
+        cursor: pointer;
+    }
+}
+::ng-deep.cdk-global-overlay-wrapper{
+    overflow: auto !important;
+  }

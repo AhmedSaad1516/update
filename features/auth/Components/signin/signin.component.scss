@@ -1,0 +1,43 @@
+mat-card {
+  margin: 2em auto;
+  margin-top: 6em;
+}
+
+mat-form-field {
+  display: block;
+}
+
+.postion-absolute-left-93{
+  position: absolute;
+  left: 93%;
+}
+@import "../../../../../assets/scss/matirial.scss";
+.signin{
+    padding: 0 !important;
+    margin: 0 !important;
+    &__form{
+        h2{
+            margin-bottom: 8px;
+        }
+        &__description{
+         font-size: 16px !important;
+         line-height: 24px;
+         
+        }
+    }
+    .mat-mdc-input-element{
+        background-color: red !important;
+    }
+}
+.mat-mdc-card{
+    border-radius: 16px !important;
+}
+.mat-mdc-form-field-flex .mat-mdc-form-field-icon-suffix .mat-icon{
+    margin-top:-7px !important;
+}
+.mdc-text-field--no-label:not(.mdc-text-field--textarea) .mat-mdc-form-field-input-control.mdc-text-field__input, .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
+    padding-inline-start: 16px !important;
+}
+.mat-mdc-input-element{
+ color: red;
+}

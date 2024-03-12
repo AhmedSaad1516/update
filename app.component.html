@@ -1,0 +1,52 @@
+
+<div [class.loading]="isLoad">
+<div [dir]="changeLangService.currentLang === 'en' ? 'ltr' : 'rtl'">
+  <!-- *ngIf="!isLoad" -->
+    <!-- Content to be disabled -->
+  @if(isCheckedUrl() == true){
+  <app-horizontal-header />
+  }
+  @else{
+    <div class="lang-sec d-xl-block d-none">
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu"
+        style="
+          background-color: transparent;
+          border: none;
+          direction: ltr;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          gap: 8px;
+          text-transform: capitalize;
+        "
+      >
+        <img src="../assets/icons/keyboard_arrow_down-white.svg" />
+        <span style="color: #fff"> {{ changeLangService.currentLang }} </span>
+        <img src="../assets/icons/public.svg" />
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="changeLangService.changeLang()">
+          <span>{{ changeLangService.currentLang == "en" ? "Ar" : "En" }}</span>
+        </button>
+      </mat-menu>
+    </div>
+  }
+ 
+  <div class="lang-mob-sec d-xl-none d--xs-block" (click)="changeLangService.changeLang()">
+    <img src="../assets/icons/public.svg" />
+  </div>
+  <router-outlet></router-outlet>
+  @if (isLoad) {
+
+  <mat-spinner diameter="50"></mat-spinner>
+  }
+
+  <div style="height: 10px"></div>
+  @if(isCheckedUrl() == true){
+  <app-horizontal-footer />
+  }
+</div>
+</div>

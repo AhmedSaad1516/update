@@ -1,0 +1,145 @@
+<!-- <mat-divider></mat-divider> -->
+
+<mat-card>
+  <mat-card-content>
+    <div class="text-center">
+      <span>
+        <img src="assets/img/logo-taqeem.svg" class="img-style" />
+      </span>
+      <h2 class="custom-text-head">{{ "signup.stepTwoLabel" | translate }}</h2>
+    </div>
+    <form [formGroup]="form">
+      <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutAlign="space-between stretch"
+      >
+        <div fxFlex="49">
+          <app-auto-complete
+            [label]="('nationalAddress.City' | translate) + ''"
+            [placeholder]="'nationalAddress.Choose' | translate"
+            [control]="form.get('city')"
+            [options]="options"
+            [id]="'city'"
+
+          />
+        </div>
+        <div fxFlex="49">
+          <app-auto-complete
+            [label]="('nationalAddress.District' | translate) + ''"
+            [placeholder]="'nationalAddress.Choose' | translate"
+            [control]="form.get('district')"
+            [options]="options"
+            [id]="'district'"
+
+          />
+        </div>
+      </div>
+
+      <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutAlign="space-between stretch"
+      >
+        <div fxFlex="49">
+          <input-field
+            [label]="('nationalAddress.Street' | translate) + ''"
+            [placeholder]="'nationalAddress.EnterStreet' | translate"
+            [controlF]="form.get('street')"
+            [id]="'street'"
+
+          />
+        </div>
+        <div fxFlex="49">
+          <input-field
+            [label]="('nationalAddress.Buildingnumber' | translate) + ''"
+            [placeholder]="'nationalAddress.EnterBuildingnumber' | translate"
+            [controlF]="form.get('buildingNumber')"
+            [id]="'buildingNumber'"
+
+          />
+        </div>
+      </div>
+      <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutAlign="space-between stretch"
+      >
+        <div fxFlex="49">
+          <input-field
+            [label]="('nationalAddress.Additionalnumber' | translate) + ''"
+            [placeholder]="'nationalAddress.EnterAdditionalNumber' | translate"
+            [controlF]="form.get('additionalNumber')"
+            [id]="'additionalNumber'"
+
+          />
+        </div>
+        <div fxFlex="49">
+          <input-field
+            [label]="('nationalAddress.PostalCode' | translate) + ''"
+            [placeholder]="'nationalAddress.EnterPostalCode' | translate"
+            [controlF]="form.get('postalCode')"
+            [id]="'postalCode'"
+
+          />
+        </div>
+      </div>
+      <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutAlign="space-between stretch"
+      >
+        <div fxFlex="100">
+          <input-field
+            [label]="
+              ('nationalAddress.Nationalabbreviatedaddress' | translate) + ''
+            "
+            [placeholder]="
+              'nationalAddress.EnterNationalabbreviatedaddress' | translate
+            "
+            [controlF]="form.get('nationalAbbreviatedAddress')"
+            [id]="'nationalAbbreviatedAddress'"
+
+          />
+        </div>
+      </div>
+    </form>
+    <div
+      style="
+        flex-direction: row;
+        box-sizing: border-box;
+        display: flex;
+        place-content: center space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      "
+      class="mt-4"
+    >
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <span class="margin-inline-end-20">
+          <app-shared-button
+            [label]="'nationalAddress.SubmitApplication' | translate"
+            (buttonClick)="submit()"
+            [id]="'submitBtn'"
+
+          >
+          </app-shared-button>
+        </span>
+
+        <span>
+          <cancel-button
+            [label]="'nationalAddress.Skip' | translate"
+            (buttonClick)="openSuccessAlert()"
+          >
+            <!-- (buttonClick)="gotologin()" -->
+          </cancel-button>
+        </span>
+      </div>
+      <!-- <div>
+    <a class="a-text-underline-bold" (click)="back()">
+      {{ "signup.Back" | translate }}</a
+    >
+  </div> -->
+    </div>
+  </mat-card-content></mat-card
+>
